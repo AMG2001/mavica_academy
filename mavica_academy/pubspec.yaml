@@ -28,13 +28,12 @@ environment:
 # versions available, run `flutter pub outdated`.
 # versions available, run `flutter pub outdated`.
 dependencies:
-  animated_splash_screen: ^1.3.0
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
-  flutter_launcher_icons: ^0.9.3
   flutter_native_splash: ^2.2.7
+  lottie: ^1.4.1
   share: ^2.0.4
   shared_preferences: ^2.0.15
 
@@ -58,12 +57,11 @@ flutter:
     - assets/application/
     - assets/fonts/
     - assets/icons/
+    - assets/courses/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

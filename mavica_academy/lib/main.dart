@@ -1,49 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:mavica_academy/models/constants/pages_names.dart';
+import 'package:mavica_academy/pages/about_us/about_us_page.dart';
+import 'package:mavica_academy/pages/account_page/account_page.dart';
+import 'package:mavica_academy/pages/courses_page/courses_page.dart';
+import 'package:mavica_academy/pages/home_page/home_page.dart';
 import 'package:mavica_academy/pages/introduction_screen/introduction_screen.dart';
 import 'package:mavica_academy/pages/login_page/login_page.dart';
-import 'package:mavica_academy/pages/splach_screen/splach_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mavica_academy/pages/notifications_page/notifications_page.dart';
+import 'package:mavica_academy/pages/posts_page/posts_page.dart';
+import 'package:mavica_academy/pages/settings_page/settings_page.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(MavicaAcademyApp());
 }
 
 class MavicaAcademyApp extends StatefulWidget {
-  // late SharedPreferences prefs;
   @override
   State<MavicaAcademyApp> createState() => _MavicaAcademyAppState();
 }
 
 class _MavicaAcademyAppState extends State<MavicaAcademyApp> {
-  // Obtain shared preferences.
-
-  // @override
-  // void initState() {
-  //   createPrefObj();
-  //   if (widget.prefs.getBool("showIntroductionScreen") == null) {
-  //     widget.prefs.setBool("showIntroductionScreen", true);
-  //   } else {
-  //     widget.prefs.setBool("showIntroductionScreen", false);
-  //   }
-  // }
-
-  // void createPrefObj() async {
-  //   widget.prefs = await SharedPreferences.getInstance();
-  // }
 
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
     return MaterialApp(
       routes: {
-        ConstantPagesName.splashScreenName: (context) => SplashScreen(),
+        ConstantPagesName.homePageScreenName: (context) => HomePage(),
+        ConstantPagesName.coursesPage: (context) => CoursesPage(),
+        ConstantPagesName.postsPage: (context) => PostsPage(),
+        ConstantPagesName.notificationsPage: (context) => NotificationsPage(),
+        ConstantPagesName.settingsPage: (context) => SettingsPage(),
+        ConstantPagesName.accountPage: (context) => AccountPage(),
+        ConstantPagesName.aboutUsPage: (context) => AboutUsPage(),
         ConstantPagesName.loginScreenName: (context) => LoginScreen(),
         ConstantPagesName.introductionScreenName: (context) =>
             IntroductionScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Mavica Academy',
-      initialRoute: ConstantPagesName.splashScreenName,
+      initialRoute: ConstantPagesName.homePageScreenName,
     );
   }
 }
