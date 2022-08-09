@@ -2,19 +2,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class FrostedGlassBox extends StatelessWidget {
-  final double width, height;
-  final Widget child;
+  final child;
 
-  FrostedGlassBox(
-      {required this.width, required this.height, required this.child});
+  FrostedGlassBox({required this.child});
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20.0),
       child: Container(
-        width: width,
-        height: height,
         child: Stack(
           children: [
             BackdropFilter(
@@ -22,15 +18,13 @@ class FrostedGlassBox extends StatelessWidget {
                 sigmaX: 7.0,
                 sigmaY: 7.0,
               ),
-              child: Container(width: width, height: height, child: Text(" ")),
+              child: Container(child: Text(" ")),
             ),
             Opacity(
                 opacity: 0.15,
                 child: Image.asset(
                   "assets/noise.png",
                   fit: BoxFit.cover,
-                  width: width,
-                  height: height,
                 )),
             Container(
               decoration: BoxDecoration(

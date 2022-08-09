@@ -7,4 +7,4 @@ class DrawerInitialState extends DrawerState {}
 
 class SelectedDrawerItemChanged extends DrawerState {}
 
-class FirstTimeDrawerOpen extends DrawerState {}
+

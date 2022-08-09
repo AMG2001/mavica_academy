@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mavica_academy/models/constants/pages_names.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/drawer/drawer_cubit/drawer_cubit_cubit.dart';
 
 class HomePageDrawerItem extends StatelessWidget {
-  String pageName;
   String itemText;
   IconData itemIcon;
   String itemNavigationPageName;
@@ -12,7 +10,6 @@ class HomePageDrawerItem extends StatelessWidget {
   bool selected = false;
 
   HomePageDrawerItem({
-    required this.pageName,
     required this.itemText,
     required this.itemIcon,
     required this.itemIndex,
@@ -40,13 +37,10 @@ class HomePageDrawerItem extends StatelessWidget {
             leading:
                 Icon(itemIcon, color: selected ? Colors.white : Colors.black),
             onTap: () {
-              if (pageName == ConstantPagesName.homePageScreenName) {
-              } else {
-                Navigator.pop(context);
-                BlocProvider.of<DrawerCubit>(context)
-                    .changeSelectedDraerItem(itemIndex);
-                Navigator.pushNamed(context, itemNavigationPageName);
-              }
+          
+              BlocProvider.of<DrawerCubit>(context)
+                  .changeSelectedDraerItem(itemIndex);
+              Navigator.pushNamed(context, itemNavigationPageName);
             });
       },
     );

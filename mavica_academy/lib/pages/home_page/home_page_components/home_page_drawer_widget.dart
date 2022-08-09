@@ -6,8 +6,6 @@ import 'package:mavica_academy/pages/home_page/home_page_components/drawer/drawe
 import 'package:mavica_academy/pages/home_page/home_page_components/student_info_container.dart';
 
 class HomePageDrawerWidget extends StatelessWidget {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,33 +20,28 @@ class HomePageDrawerWidget extends StatelessWidget {
                 children: [
                   StudentInfoContainer(),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.homePageScreenName,
                       itemText: "Home",
                       itemIcon: Icons.home_outlined,
                       itemIndex: 0,
                       itemNavigationPageName:
                           ConstantPagesName.homePageScreenName),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.coursesPage,
                       itemText: "Courses",
                       itemIcon: Icons.local_library_outlined,
                       itemIndex: 1,
                       itemNavigationPageName: ConstantPagesName.coursesPage),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.postsPage,
                       itemText: "Posts",
                       itemIcon: Icons.post_add_outlined,
                       itemIndex: 2,
                       itemNavigationPageName: ConstantPagesName.postsPage),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.notificationsPage,
                       itemText: "Notifications",
                       itemIcon: Icons.notification_add_outlined,
                       itemIndex: 3,
                       itemNavigationPageName:
                           ConstantPagesName.notificationsPage),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.settingsPage,
                       itemText: "Settings",
                       itemIcon: Icons.info_outlined,
                       itemIndex: 4,
@@ -56,20 +49,17 @@ class HomePageDrawerWidget extends StatelessWidget {
                   Divider(height: 0, thickness: 1),
                   // Spacer(),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.accountPage,
                       itemText: "Account",
                       itemIcon: Icons.person_outline_outlined,
                       itemIndex: 5,
                       itemNavigationPageName: ConstantPagesName.accountPage),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.loginScreenName,
                       itemText: "Logout",
                       itemIcon: Icons.logout_outlined,
                       itemIndex: 6,
                       itemNavigationPageName:
                           ConstantPagesName.loginScreenName),
                   HomePageDrawerItem(
-                      pageName: ConstantPagesName.aboutUsPage,
                       itemText: "About Us",
                       itemIcon: Icons.info_outlined,
                       itemIndex: 7,

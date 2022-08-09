@@ -16,8 +16,4 @@ class DrawerCubit extends Cubit<DrawerState> {
     emit(SelectedDrawerItemChanged());
   }
 
-  void firstTimeDrawerOpen() {
-    dontShowDrawer = true;
-    emit(FirstTimeDrawerOpen());
-  }
 }

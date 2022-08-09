@@ -6,20 +6,11 @@
 // - https://github.com/HoveredCube/frostedglass_video1
 // Follow @HoveredCube on instagram.
 
-
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-class FrostedGlassBox extends StatelessWidget {
-  const FrostedGlassBox(
-      {Key? key,
-      required this.theWidth,
-      required this.theHeight,
-      required this.theChild})
-      : super(key: key);
-
-  final theWidth;
-  final theHeight;
+class GlossyContainer extends StatelessWidget {
+  GlossyContainer({required this.theChild});
   final theChild;
 
   @override
@@ -27,8 +18,6 @@ class FrostedGlassBox extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(30),
       child: Container(
-        width: theWidth,
-        height: theHeight,
         color: Colors.transparent,
         //we use Stack(); because we want the effects be on top of each other,
         //  just like layer in photoshop.
@@ -55,7 +44,7 @@ class FrostedGlassBox extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      //begin color  
+                      //begin color
                       Colors.white.withOpacity(0.15),
                       //end color
                       Colors.white.withOpacity(0.05),

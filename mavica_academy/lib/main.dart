@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:mavica_academy/models/constants/pages_names.dart';
 import 'package:mavica_academy/pages/about_us/about_us_page.dart';
 import 'package:mavica_academy/pages/account_page/account_page.dart';
@@ -11,9 +10,15 @@ import 'package:mavica_academy/pages/notifications_page/notifications_page.dart'
 import 'package:mavica_academy/pages/posts_page/posts_page.dart';
 import 'package:mavica_academy/pages/settings_page/settings_page.dart';
 
+
 void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  /**
+   * For Firebase
+   */
+
+  /**
+   * Run App Method ->
+   */
   runApp(MavicaAcademyApp());
 }
 
@@ -26,7 +31,6 @@ class _MavicaAcademyAppState extends State<MavicaAcademyApp> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
     return MaterialApp(
       routes: {
         ConstantPagesName.homePageScreenName: (context) => HomePage(),
