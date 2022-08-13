@@ -9,17 +9,14 @@ import 'package:mavica_academy/pages/login_page/login_page.dart';
 import 'package:mavica_academy/pages/notifications_page/notifications_page.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page.dart';
 import 'package:mavica_academy/pages/settings_page/settings_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-
-void main() {
-  /**
-   * For Firebase
-   */
-
-  /**
-   * Run App Method ->
-   */
+void main() async{
   runApp(MavicaAcademyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 class MavicaAcademyApp extends StatefulWidget {
@@ -28,7 +25,6 @@ class MavicaAcademyApp extends StatefulWidget {
 }
 
 class _MavicaAcademyAppState extends State<MavicaAcademyApp> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
