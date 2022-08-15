@@ -39,11 +39,11 @@ class PostsPage extends StatelessWidget {
            * bottom sheet Functionallity imported from postsPageComponets
            */
           showPostsPageBottomSheet(
-              context: context,
-              formGlobalKey: formGlobalKey,
-              postTitleController: postTitleController,
-              postDescriptionController: postDescriptionController,
-              last_index: last_index);
+            context: context,
+            formGlobalKey: formGlobalKey,
+            postTitleController: postTitleController,
+            postDescriptionController: postDescriptionController,
+          );
         },
         child:
             /**
@@ -66,84 +66,33 @@ class PostsPage extends StatelessWidget {
           stream: _postsStream,
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            /**
-                 * if Error .. show error State
-                 */
             if (snapshot.hasError) {
-              return Text('Something went wrong');
+              return Center(child: Text('Something went wrong'));
             }
-            /**
-               * in loading .. show loading indicator
-               */
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            /**
-             * Success data retrieved .. show posts
-             */
-            return ListView(
-              children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                /**
-                 * All posts data are stored in this data variable :
-                 */
-                late String postTitle;
-                late String postDescription;
-                late String userImageUrl;
-                late int like=0;
-                late int love=0;
-                late int dislike=0;
-                late int postsIndex;
-                Map<String, dynamic> data =
-                    document.data() as Map<String, dynamic>;
-                try {
-                  postTitle = data['post_title'];
-                } catch (e) {
-                  print("probelm in post title");
-                }
-                try {
-                  postDescription = data['post_description'];
-                } catch (e) {
-                  print("probelm in post description");
-                }
-                try {
-                  userImageUrl = data['user_image'];
-                } catch (e) {
-                  print("probelm in user image");
-                }
-                try {
-                  like = data['like'];
-                } catch (e) {
-                  print("probelm in like");
-                }
-                try {
-                  love = data['love'];
-                } catch (e) {
-                  print("probelm in  love");
-                }
-                try {
-                  dislike = data['dislike'];
-                } catch (e) {
-                  print("probelm in  dislike");
-                }
-                try {
-                  postsIndex = data['posts_index'];
-                } catch (e) {
-                  print("probelm in  post_index");
-                }
 
-                return PostContainer(
-                    postTitle: postTitle,
-                    postDescription: postDescription,
-                    userImageLink: userImageUrl,
-                    like: like,
-                    love: love,
-                    disLike: dislike,
-                    postIndex: postsIndex,
-                    postDocumentId: document.id);
-              }).toList(growable: true),
-            );
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: Text("Loading"));
+            }
+
+             return ListView.builder(itemBuilder: (context,index){
+              return PostContainer(
+                postTitle: snapshot.data.documents[index]['post_title'],
+              );
+             }, itemCount: snapshot.data.docs.length);
+             //
+             // ListView(
+            //   children: snapshot.data!.docs.map((DocumentSnapshot document) {
+            //     Map<String, dynamic> postInfo =
+            //         document.data()! as Map<String, dynamic>;
+
+            //     return PostContainer(
+            //         postTitle: postInfo['post_title'],
+            //         postDescription: postInfo['post_description'],
+            //         postIndex: postInfo['post_index'],
+            //         postDocumentId: document.id);
+            //     print("adding posts done ##");
+            //   }).toList(growable: true),
+            // );
           },
         ),
       ),
