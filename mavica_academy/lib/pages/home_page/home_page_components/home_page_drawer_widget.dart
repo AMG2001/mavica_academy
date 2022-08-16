@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mavica_academy/models/constants/pages_names.dart';
+import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/drawer/drawer_cubit/drawer_cubit_cubit.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/drawer/drawer_item.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/student_info_container.dart';

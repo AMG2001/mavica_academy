@@ -59,42 +59,43 @@ class PostsPage extends StatelessWidget {
         title: Text('Posts'),
       ),
       body: SafeArea(
+        child: Center(),
         /**
          * Stream Builder to retrieve and Build Posts ->
          */
-        child: StreamBuilder<QuerySnapshot>(
-          stream: _postsStream,
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) {
-              return Center(child: Text('Something went wrong'));
-            }
+        // child: StreamBuilder<QuerySnapshot>(
+        //   stream: _postsStream,
+        //   builder:
+        //       (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        //     if (snapshot.hasError) {
+        //       return Center(child: Text('Something went wrong'));
+        //     }
 
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: Text("Loading"));
-            }
+        //     if (snapshot.connectionState == ConnectionState.waiting) {
+        //       return Center(child: Text("Loading"));
+        //     }
 
-             return ListView.builder(itemBuilder: (context,index){
-              return PostContainer(
-                postTitle: snapshot.data.documents[index]['post_title'],
-              );
-             }, itemCount: snapshot.data.docs.length);
-             //
-             // ListView(
-            //   children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            //     Map<String, dynamic> postInfo =
-            //         document.data()! as Map<String, dynamic>;
+        //      return ListView.builder(itemBuilder: (context,index){
+        //       return PostContainer(
+        //         postTitle: snapshot.data.documents[index]['post_title'],
+        //       );
+        //      }, itemCount: snapshot.data.docs.length);
+        //      //
+        //      // ListView(
+        //     //   children: snapshot.data!.docs.map((DocumentSnapshot document) {
+        //     //     Map<String, dynamic> postInfo =
+        //     //         document.data()! as Map<String, dynamic>;
 
-            //     return PostContainer(
-            //         postTitle: postInfo['post_title'],
-            //         postDescription: postInfo['post_description'],
-            //         postIndex: postInfo['post_index'],
-            //         postDocumentId: document.id);
-            //     print("adding posts done ##");
-            //   }).toList(growable: true),
-            // );
-          },
-        ),
+        //     //     return PostContainer(
+        //     //         postTitle: postInfo['post_title'],
+        //     //         postDescription: postInfo['post_description'],
+        //     //         postIndex: postInfo['post_index'],
+        //     //         postDocumentId: document.id);
+        //     //     print("adding posts done ##");
+        //     //   }).toList(growable: true),
+        //     // );
+        //   },
+        // ),
       ),
     );
   }
