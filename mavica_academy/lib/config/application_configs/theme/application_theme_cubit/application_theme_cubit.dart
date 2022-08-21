@@ -1,37 +1,27 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-part 'application_theme_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mavica_academy/config/application_configs/theme/application_theme.dart';
+import 'package:mavica_academy/config/application_configs/theme/application_theme_cubit/application_theme_state.dart';
 
 class ApplicationThemeCubit extends Cubit<ApplicationThemeState> {
   /**
    * class Constructor
    */
-  ApplicationThemeCubit() : super(ApplicationThemeCubitInitialState());
-  /**
-   * Obj that will store theme state of application
-   */
-  static late SharedPreferences darkModeSharedPref;
-/**
- * setter function of theme SharedPref value
- */
-  Future<void> setDarkModeValue(bool val) async {
-    darkModeSharedPref = await SharedPreferences.getInstance();
-    darkModeSharedPref.setBool('darkMode', val);
-    print("value of darkMode is ${darkModeSharedPref.getBool("darkMode")}");
+  ApplicationThemeCubit() : super(ApplicationThemeCubitInitialState()) {
+    currentTheme = ApplicationTheme.applicationLightTheme;
   }
 
-  /**
-   * getter function that return stored value in theme SharedPref
-   */
-  Future<bool?> getDarkModeValue() async {
-    darkModeSharedPref = await SharedPreferences.getInstance();
-    return darkModeSharedPref.getBool('darkMode');
+  ThemeData? currentTheme;
+
+  void changeApplicationTheme(bool isDark) {
+    if (isDark == true) {
+      currentTheme = ApplicationTheme.applicationDarkTheme;
+      print("App Changed to Dark Mode");
+      emit(ApplicationDarkThemeState());
+    } else {
+      currentTheme = ApplicationTheme.applicationLightTheme;
+      print("App Changed to Light Mode");
+      emit(ApplicationLightThemeState());
+    }
   }
-
-  /**
-   * This boolean value is come from switch in settings page.
-   */
-
 }
