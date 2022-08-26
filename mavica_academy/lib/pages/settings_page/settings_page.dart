@@ -1,60 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mavica_academy/config/application_configs/application_theme_shared_prefs.dart';
-import 'package:mavica_academy/config/application_configs/theme/application_theme_cubit/application_theme_cubit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:mavica_academy/config/application_configs/theme_controller.dart';
 
-import '../../config/application_configs/theme/application_theme_cubit/application_theme_state.dart';
-
-class SettingsPage extends StatefulWidget {
-  @override
-  State<SettingsPage> createState() => _SettingsPageState();
-}
-
-class _SettingsPageState extends State<SettingsPage> {
-  bool _isDark = false;
+class SettingsPage extends StatelessWidget {
+  final ApplicationThemeController themeController =
+      Get.put(ApplicationThemeController(), permanent: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Settings'),
-        ),
-        body: BlocProvider<ApplicationThemeCubit>(
-          create: (context) => ApplicationThemeCubit(),
-          child: BlocBuilder<ApplicationThemeCubit, ApplicationThemeState>(
-            builder: (context, state) {
-              return SafeArea(
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text("Dark Mode"),
-                          Switch(
-                            /**
-                             * Get it's value from ApplicationThemeSharedPrefs class 
-                             */
-                            value:
-                                ApplicationThemeSharedPref.getDarkModeValue(),
-                            onChanged: (val) async {
-                              await ApplicationThemeSharedPref.saveDarkModeValue(val).then((value) => print("Setting Theme Value Done !!"));
-                              setState(() {
-                                _isDark = val;
-                                BlocProvider.of<ApplicationThemeCubit>(context)
-                                    .changeApplicationTheme(val);
-                              });
-                            },
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+      appBar: AppBar(
+        title: Text('Settings'),
+      ),
+      body: SafeArea(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: GetBuilder<ApplicationThemeController>(
+                  builder: ((controller) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CircleAvatar(
+                          radius: 24,
+                          child: FaIcon(FontAwesomeIcons.moon),
+                        ),
+                        Text("Dark Mode"),
+                        Text(themeController.isDark == true ? "on" : "off"),
+                        Switch(
+                          value: controller.isDark,
+                          onChanged: (value) async {
+                            controller.changeApplicationTheme(value);
+                          },
+                        ),
+                      ],
+                    );
+                  }),
                 ),
-              );
-            },
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -5,7 +5,6 @@ class ApplicationTheme {
   static ThemeData applicationDarkTheme = ThemeData(
     primaryColor: ConstantColors.primaryColor,
     appBarTheme: AppBarTheme(backgroundColor: Colors.black),
-    drawerTheme: DrawerThemeData(backgroundColor: Colors.black38),
     primaryTextTheme: const TextTheme(
       headline6: TextStyle(color: Colors.black, fontSize: 24),
       headline1: TextStyle(color: Colors.black, fontSize: 32),
@@ -20,6 +19,7 @@ class ApplicationTheme {
   );
   static ThemeData applicationLightTheme = ThemeData(
     primaryColor: ConstantColors.primaryColor,
+    appBarTheme: AppBarTheme(backgroundColor: ConstantColors.primaryColor),
     primaryTextTheme: const TextTheme(
       headline6: TextStyle(color: Colors.white, fontSize: 24),
       headline1: TextStyle(color: Colors.white, fontSize: 32),
