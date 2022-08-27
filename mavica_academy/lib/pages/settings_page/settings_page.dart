@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:mavica_academy/config/application_configs/theme_controller.dart';
+import 'package:mavica_academy/config/application_configs/theme/theme_controller.dart';
 
 class SettingsPage extends StatelessWidget {
   final ApplicationThemeController themeController =
@@ -11,7 +10,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: SafeArea(
         child: Container(
@@ -26,11 +25,11 @@ class SettingsPage extends StatelessWidget {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 24,
                           child: FaIcon(FontAwesomeIcons.moon),
                         ),
-                        Text("Dark Mode"),
+                        const Text("Dark Mode"),
                         Text(themeController.isDark == true ? "on" : "off"),
                         Switch(
                           value: controller.isDark,

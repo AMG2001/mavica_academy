@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:mavica_academy/config/application_configs/first_launch.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_name.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mavica_academy/config/application_configs/theme_controller.dart';
+import 'package:mavica_academy/config/application_configs/theme/theme_controller.dart';
 
 import 'firebase_options.dart';
 
@@ -18,7 +19,14 @@ void main() async {
   /**
        * get application stored theme
        */
-  applicationThemeController.init();
+  await applicationThemeController.init();
+  /**
+   * Check if it first time launch .. show intro screen
+   * else  .. see if login or not .. 
+   * login go to main page.
+   * else go to login or sign up page .
+   */
+  await FirstLaunch.init();
   /**
    * Firebase launching await .
    */
@@ -61,7 +69,7 @@ class MavicaAcademyApp extends StatelessWidget {
         /**
                        * initial Route
                        */
-        initialRoute: ConstantPagesName.homePageScreenName,
+        initialRoute: ConstantPagesName.splachPage,
       );
     });
   }

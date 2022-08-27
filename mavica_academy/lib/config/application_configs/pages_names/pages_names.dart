@@ -10,4 +10,6 @@ class ConstantPagesName {
   static String settingsPage = "settingsPage";
   static String accountPage = "accountPage";
   static String aboutUsPage = "aboutUsPage";
+  static String introductionPage = "introductionPage";
+  static String splachPage = "splachPage";
 }

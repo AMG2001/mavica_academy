@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:mavica_academy/pages/about_us/about_us_page.dart';
 import 'package:mavica_academy/pages/account_page/account_page.dart';
+import 'package:mavica_academy/pages/animated_splach_screen/animated_splach_screen.dart';
 import 'package:mavica_academy/pages/courses_page/courses_page.dart';
 import 'package:mavica_academy/pages/home_page/home_page.dart';
 import 'package:mavica_academy/pages/introduction_screen/introduction_screen.dart';
@@ -21,5 +22,6 @@ class PagesNames {
     ConstantPagesName.aboutUsPage: (context) => AboutUsPage(),
     ConstantPagesName.loginScreenName: (context) => LoginScreen(),
     ConstantPagesName.introductionScreenName: (context) => IntroductionScreen(),
+    ConstantPagesName.splachPage: (context) => AnimatedSplachPage(),
   };
 }
