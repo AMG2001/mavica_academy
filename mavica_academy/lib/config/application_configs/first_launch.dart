@@ -4,7 +4,9 @@ class FirstLaunch {
   static late SharedPreferences firstLaunchBool;
   static Future<void> init() async {
     firstLaunchBool = await SharedPreferences.getInstance();
-    await firstLaunchBool.setBool('firstLaunchDone', false);
+   if(firstLaunchBool.getBool("firstLaunchDone") == null){
+      await firstLaunchBool.setBool('firstLaunchDone', false);
+   }
   }
 
   static bool firstLaunchDone() {

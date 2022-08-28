@@ -2,7 +2,7 @@
     package="com.example.mavica_academy">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="mavica_academy"
+        android:label="GoLearn"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

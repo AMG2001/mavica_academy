@@ -24,15 +24,18 @@ class ApplicationThemeController extends GetxController {
        */
       await currentThemeSharedPref.setBool("isDark", false);
       isDark = false;
-      currentTheme = ThemeData.light().copyWith();
+      currentTheme = ThemeData.light().copyWith(
+          textTheme: TextTheme(button: TextStyle(color: Colors.white)));
       update();
     } else {
       /**
        * to get last theme value.
        */
       isDark = currentThemeSharedPref.getBool("isDark")!;
-      if(isDark==true)currentTheme = ThemeData.dark().copyWith();
-      else currentTheme = ThemeData.light().copyWith();
+      if (isDark == true)
+        currentTheme = ThemeData.dark().copyWith();
+      else
+        currentTheme = ThemeData.light().copyWith();
       update();
     }
   }
