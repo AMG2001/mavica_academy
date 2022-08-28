@@ -5,6 +5,7 @@ class LoginController extends GetxController {
   bool showColumnBool = false;
   void changeShowColumnBool() {
     showColumnBool = true;
+    print(showColumnBool);
     update();
   }
 

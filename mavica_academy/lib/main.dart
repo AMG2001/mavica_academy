@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mavica_academy/config/application_configs/first_launch.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_name.dart';

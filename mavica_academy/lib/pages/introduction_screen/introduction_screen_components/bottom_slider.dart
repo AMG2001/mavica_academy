@@ -80,7 +80,7 @@ class BottomSlider extends StatelessWidget {
                           ),
                         ),
                         onPressed: () async {
-                          if (controller.index == 5) {
+                          if (controller.index == 4) {
                             await FirstLaunch.changeFirstLaunchValue()
                                 .then((value) {
                               Get.offNamed(ConstantPagesName.loginScreenName);

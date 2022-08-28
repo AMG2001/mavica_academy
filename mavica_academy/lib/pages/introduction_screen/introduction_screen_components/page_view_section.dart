@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mavica_academy/pages/introduction_screen/introduction_screen_controller.dart';
 import 'package:mavica_academy/pages/introduction_screen/introduction_screen_pages/page1.dart';
 import 'package:mavica_academy/pages/introduction_screen/introduction_screen_pages/page2.dart';
 import 'package:mavica_academy/pages/introduction_screen/introduction_screen_pages/page3.dart';
@@ -10,10 +12,27 @@ class PageViewSection extends StatelessWidget {
   PageViewSection({required this.pageController});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: PageView(
-          controller: pageController,
-          children: const [ Page1(), Page2(), Page3(), Page4(), Page5()]),
-    );
+    return GetBuilder<IntroductionScreenController>(
+        init: IntroductionScreenController(),
+        builder: (controller) {
+          return Container(
+            child: PageView(
+                onPageChanged: (value) {
+                  if (value > controller.index) {
+                    print("page value = ${value}");
+                    print("index before increase ${controller.index}");
+                    controller.increaseIndex();
+                    print("index after increase ${controller.index}");
+                  } else {
+                    print("page value = ${value}");
+                    print("index before decrease ${controller.index}");
+                    controller.decreaseIndex();
+                    print("index after decrease ${controller.index}");
+                  }
+                },
+                controller: pageController,
+                children: const [Page1(), Page2(), Page3(), Page4(), Page5()]),
+          );
+        });
   }
 }

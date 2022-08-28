@@ -21,7 +21,7 @@ class AnimatedSplachPage extends StatelessWidget {
             animationDuration: const Duration(seconds: 1),
             splashIconSize: 350,
             nextScreen: FirstLaunch.firstLaunchDone()
-                ? const LoginScreen()
+                ? LoginScreen()
                 : IntroductionScreen(),
             pageTransitionType: PageTransitionType.leftToRight,
           );
