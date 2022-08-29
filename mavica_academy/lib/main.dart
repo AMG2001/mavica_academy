@@ -5,6 +5,8 @@ import 'package:mavica_academy/config/application_configs/pages_names/pages_name
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mavica_academy/config/application_configs/theme/theme_controller.dart';
+import 'package:mavica_academy/config/user_logs/user_info.dart';
+import 'package:mavica_academy/config/user_logs/user_logged_controller.dart';
 
 import 'firebase_options.dart';
 
@@ -26,6 +28,16 @@ void main() async {
    * else go to login or sign up page .
    */
   await FirstLaunch.init();
+/**
+ * User Logged Shared Pref .. if user Logged in :
+ * move Directly to home page , 
+ * else .. move to login page.
+ */
+  await UserLoggedController.init();
+/**
+ * Obj that will store Username , email and photo Url
+ */
+  await UserInfo.init();
   /**
    * Firebase launching await .
    */

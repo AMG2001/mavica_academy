@@ -6,11 +6,11 @@ class ApplicationTheme {
     primaryColor: ConstantColors.primaryColor,
     appBarTheme: AppBarTheme(backgroundColor: Colors.black),
     primaryTextTheme: const TextTheme(
-      headline6: TextStyle(color: Colors.black, fontSize: 24),
-      headline1: TextStyle(color: Colors.black, fontSize: 32),
-      headline2: TextStyle(color: Colors.black, fontSize: 28),
-      bodyText2: TextStyle(color: Colors.black, fontSize: 16),
-      subtitle1: TextStyle(color: Colors.black, fontSize: 8),
+      headline6: TextStyle(color: Colors.white, fontSize: 24),
+      headline1: TextStyle(color: Colors.white, fontSize: 32),
+      headline2: TextStyle(color: Colors.white, fontSize: 28),
+      bodyText2: TextStyle(color: Colors.white, fontSize: 16),
+      subtitle1: TextStyle(color: Colors.white, fontSize: 8),
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: ConstantColors.primaryColor,
@@ -21,11 +21,11 @@ class ApplicationTheme {
     primaryColor: ConstantColors.primaryColor,
     appBarTheme: AppBarTheme(backgroundColor: ConstantColors.primaryColor),
     primaryTextTheme: const TextTheme(
-      headline6: TextStyle(color: Colors.white, fontSize: 24),
-      headline1: TextStyle(color: Colors.white, fontSize: 32),
-      headline2: TextStyle(color: Colors.white, fontSize: 28),
-      bodyText2: TextStyle(color: Colors.white, fontSize: 16),
-      subtitle1: TextStyle(color: Colors.white, fontSize: 8),
+      headline6: TextStyle(color: Colors.black, fontSize: 24),
+      headline1: TextStyle(color: Colors.black, fontSize: 32),
+      headline2: TextStyle(color: Colors.black, fontSize: 28),
+      bodyText2: TextStyle(color: Colors.black, fontSize: 16),
+      subtitle1: TextStyle(color: Colors.black, fontSize: 8),
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: ConstantColors.primaryColor,
