@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/drawer/drawer_cubit/drawer_cubit_cubit.dart';
+import 'package:mavica_academy/services/auth/google_auth_controller.dart';
 
 class HomePageDrawerItem extends StatelessWidget {
   String itemText;
@@ -36,11 +39,10 @@ class HomePageDrawerItem extends StatelessWidget {
             ),
             leading:
                 Icon(itemIcon, color: selected ? Colors.white : Colors.black),
-            onTap: () {
-          
-              BlocProvider.of<DrawerCubit>(context)
-                  .changeSelectedDraerItem(itemIndex);
-              Navigator.pushNamed(context, itemNavigationPageName);
+            onTap: () async {
+              await GoogleAuthController().signOut().then((value) {
+                Get.offNamed(ConstantPagesName.loginScreenName);
+              });
             });
       },
     );

@@ -8,8 +8,9 @@ import 'package:mavica_academy/pages/introduction_screen/introduction_screen_pag
 import 'package:mavica_academy/pages/introduction_screen/introduction_screen_pages/page5.dart';
 
 class PageViewSection extends StatelessWidget {
+  List<AssetImage> images;
   PageController pageController = PageController();
-  PageViewSection({required this.pageController});
+  PageViewSection({required this.pageController, required this.images});
   @override
   Widget build(BuildContext context) {
     return GetBuilder<IntroductionScreenController>(
@@ -19,19 +20,19 @@ class PageViewSection extends StatelessWidget {
             child: PageView(
                 onPageChanged: (value) {
                   if (value > controller.index) {
-                    print("page value = ${value}");
-                    print("index before increase ${controller.index}");
                     controller.increaseIndex();
-                    print("index after increase ${controller.index}");
                   } else {
-                    print("page value = ${value}");
-                    print("index before decrease ${controller.index}");
                     controller.decreaseIndex();
-                    print("index after decrease ${controller.index}");
                   }
                 },
                 controller: pageController,
-                children: const [Page1(), Page2(), Page3(), Page4(), Page5()]),
+                children: [
+                  Page1(image: images[0]),
+                  Page2(image: images[1]),
+                  Page3(image: images[2]),
+                  Page4(image: images[3]),
+                  Page5(image: images[4])
+                ]),
           );
         });
   }

@@ -53,6 +53,7 @@ class HomePageDrawerWidget extends StatelessWidget {
                       itemIcon: Icons.person_outline_outlined,
                       itemIndex: 5,
                       itemNavigationPageName: ConstantPagesName.accountPage),
+
                   HomePageDrawerItem(
                       itemText: "Logout",
                       itemIcon: Icons.logout_outlined,

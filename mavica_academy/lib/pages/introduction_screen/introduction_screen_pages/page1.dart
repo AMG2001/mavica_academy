@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Page1 extends StatelessWidget {
-  const Page1({Key? key}) : super(key: key);
+  AssetImage image;
+  Page1({required this.image});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/introduction_images/1_light.jpg"),
+              image: image,
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(.3), BlendMode.darken),
               fit: BoxFit.cover,

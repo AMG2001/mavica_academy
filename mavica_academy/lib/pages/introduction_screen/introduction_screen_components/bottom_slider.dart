@@ -33,11 +33,17 @@ class BottomSlider extends StatelessWidget {
                             ),
                           ),
                         ),
+                        /**
+                         * Press Back Button
+                         */
                         onPressed: () {
                           controller.decreaseIndex();
+                          /**
+                           * Move Back to previous page
+                           */
                           pageController.previousPage(
                               duration: Duration(milliseconds: 500),
-                              curve: Curves.ease);
+                              curve: Curves.easeIn);
                         },
                         child: Row(
                           children: [
@@ -90,7 +96,7 @@ class BottomSlider extends StatelessWidget {
                             controller.increaseIndex();
                             pageController.nextPage(
                                 duration: Duration(milliseconds: 500),
-                                curve: Curves.ease);
+                                curve: Curves.easeIn);
                           }
                         },
                         child: Row(

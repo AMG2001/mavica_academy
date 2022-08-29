@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Page4 extends StatelessWidget {
-  const Page4({Key? key}) : super(key: key);
-
+    AssetImage image;
+  Page4({required this.image});
   @override
   Widget build(BuildContext context) {
     return Container(

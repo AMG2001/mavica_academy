@@ -46,9 +46,12 @@ class GoogleSignInButton extends StatelessWidget {
                  */
             await UserInfo.settingUserInfo(
                 userName: userData.user!.displayName!,
-                email: userData.user!.displayName!,
-                photoUrl: userData.user!.displayName!);
-                /**
+                email: userData.user!.email!,
+                photoUrl: userData.user!.photoURL!);
+            print("google user name : ${userData.user!.displayName}");
+            print("Google email : ${userData.user!.email}");
+            print("Google image url  : ${userData.user!.photoURL}");
+            /**
                  * Store logging user info .
                  */
             await UserLoggedController.loggingUser();
