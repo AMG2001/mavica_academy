@@ -1,7 +1,6 @@
 class ConstantPagesName {
   static String introductionScreenName = "IntroductionScreen";
   static String loginScreenName = "LoginScreen";
-  static String signUpScreenName = "SignUpScreen";
   static String homePageScreenName = "HomePageScreen";
   static String coursesPage = "coursesPage";
   static String postsPage = "postsPage";
@@ -11,4 +10,7 @@ class ConstantPagesName {
   static String aboutUsPage = "aboutUsPage";
   static String introductionPage = "introductionPage";
   static String splachPage = "splachPage";
+  static String signUpPage = "signUpPage";
+
+  
 }

@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserInfo {
+class UserLogs {
   static late SharedPreferences userNameSharedPref,
       emailSharedPref,
       photoUrlSharedPref;

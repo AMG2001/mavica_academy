@@ -11,12 +11,14 @@ class HomePageDrawerItem extends StatelessWidget {
   String itemNavigationPageName;
   int itemIndex;
   bool selected = false;
+  Function() function;
 
   HomePageDrawerItem({
     required this.itemText,
     required this.itemIcon,
     required this.itemIndex,
     required this.itemNavigationPageName,
+    required this.function
   });
 
   @override
@@ -39,11 +41,8 @@ class HomePageDrawerItem extends StatelessWidget {
             ),
             leading:
                 Icon(itemIcon, color: selected ? Colors.white : Colors.black),
-            onTap: () async {
-              await GoogleAuthController().signOut().then((value) {
-                Get.offNamed(ConstantPagesName.loginScreenName);
-              });
-            });
+            onTap: function
+            );
       },
     );
   }

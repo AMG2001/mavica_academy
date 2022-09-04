@@ -9,11 +9,11 @@ class StudentInfoContainer extends StatelessWidget {
         leading: CircleAvatar(
           radius: 40,
           backgroundImage: NetworkImage(
-              UserInfo.photoUrlSharedPref.getString("photoUrl")!),
+              UserLogs.photoUrlSharedPref.getString("photoUrl")!),
         ),
-        title: Text(UserInfo.userNameSharedPref.getString("userName")!),
+        title: Text(UserLogs.userNameSharedPref.getString("userName")!),
         subtitle: Text(
-          UserInfo.emailSharedPref.getString("email")!,
+          UserLogs.emailSharedPref.getString("email")!,
           softWrap: true,
           overflow: TextOverflow.ellipsis,
         ),

@@ -10,6 +10,7 @@ import 'package:mavica_academy/pages/login_page/login_page.dart';
 import 'package:mavica_academy/pages/notifications_page/notifications_page.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page.dart';
 import 'package:mavica_academy/pages/settings_page/settings_page.dart';
+import 'package:mavica_academy/pages/sign_up_page/sign_up_page.dart';
 
 class PagesNames {
   static Map<String, Widget Function(BuildContext)> pagesNamesMap = {
@@ -23,5 +24,6 @@ class PagesNames {
     ConstantPagesName.loginScreenName: (context) => LoginScreen(),
     ConstantPagesName.introductionScreenName: (context) => IntroductionScreen(),
     ConstantPagesName.splachPage: (context) => AnimatedSplachPage(),
+    ConstantPagesName.signUpPage:(context) =>SignUpPage()
   };
 }

@@ -30,7 +30,7 @@ class Page1 extends StatelessWidget {
                   fontWeight: FontWeight.w300),
             ),
             Text(
-              "GoLearn will be your supporter in your Learning joureny .",
+              "GoLearn will be your supporter in your Learning Journey .",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

@@ -44,7 +44,7 @@ class GoogleSignInButton extends StatelessWidget {
             /**
                  * After logging with Google Account .. get User data and store them
                  */
-            await UserInfo.settingUserInfo(
+            await UserLogs.settingUserInfo(
                 userName: userData.user!.displayName!,
                 email: userData.user!.email!,
                 photoUrl: userData.user!.photoURL!);

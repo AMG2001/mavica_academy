@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mavica_academy/pages/login_page/login_page_components/login_page_buttons/facebook_login_button.dart';
 import 'package:mavica_academy/pages/login_page/login_page_components/login_page_buttons/google_signin_button.dart';
 import 'package:mavica_academy/pages/login_page/login_page_components/login_page_buttons/register_and_forget_password_row.dart';
@@ -22,16 +23,32 @@ class LoginScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.all(16.0),
-                //   /**
-                //    * Login Page Theme Button
-                //    */
-                //   child: LoginPageThemeButton(),
-                // ),
                 /**
                    * Container that contain login apge header image
                    */
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: Padding(
+                              padding: EdgeInsets.all(16),
+                              child: RotatedBox(
+                                quarterTurns: 2,
+                                child: FaIcon(
+                                    FontAwesomeIcons.arrowRightFromBracket),
+                              ))),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Padding(
+                              padding: EdgeInsets.all(16),
+                              child: FaIcon(FontAwesomeIcons.sun))),
+                    ],
+                  ),
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
@@ -72,12 +89,12 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
-                      /***
-                         * User Name Text Field
-                         */
                       SizedBox(
                         height: MediaQuery.of(context).size.height * .01,
                       ),
+                      /***
+                         * User Name Text Field
+                         */
                       UserNameTextField(
                           userNameTextEditingController:
                               userNameTextEditingController),
@@ -127,6 +144,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-
-

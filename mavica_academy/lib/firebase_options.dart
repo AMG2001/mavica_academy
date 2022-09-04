@@ -66,6 +66,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '956115023643',
     projectId: 'mavica-academy',
     storageBucket: 'mavica-academy.appspot.com',
+    androidClientId: '956115023643-a4uvmdh0rjhau0h4i7c00m9vlu7t2n97.apps.googleusercontent.com',
     iosClientId: '956115023643-t4stj9iecv0rr0sk0hkh12126l05pfka.apps.googleusercontent.com',
     iosBundleId: 'com.example.mavicaAcademy',
   );
@@ -76,6 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '956115023643',
     projectId: 'mavica-academy',
     storageBucket: 'mavica-academy.appspot.com',
+    androidClientId: '956115023643-a4uvmdh0rjhau0h4i7c00m9vlu7t2n97.apps.googleusercontent.com',
     iosClientId: '956115023643-t4stj9iecv0rr0sk0hkh12126l05pfka.apps.googleusercontent.com',
     iosBundleId: 'com.example.mavicaAcademy',
   );

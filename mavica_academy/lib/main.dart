@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:mavica_academy/config/application_configs/theme/theme_controller.dart';
 import 'package:mavica_academy/config/user_logs/user_info.dart';
 import 'package:mavica_academy/config/user_logs/user_logged_controller.dart';
+import 'package:mavica_academy/pages/about_us/about_us_page_controller.dart';
 
 import 'firebase_options.dart';
 
@@ -37,8 +38,12 @@ void main() async {
 /**
  * Obj that will store Username , email and photo Url
  */
-  await UserInfo.init();
-  /**
+  await UserLogs.init();
+ /**
+  * about us 1 time animation shared pref
+  */
+  await aboutUsPageController.init();
+   /**
    * Firebase launching await .
    */
   await Firebase.initializeApp(
@@ -59,29 +64,28 @@ class MavicaAcademyApp extends StatelessWidget {
      */
     return GetBuilder<ApplicationThemeController>(builder: (controller) {
       return GetMaterialApp(
-        /**
+          /**
                        * check state of dark theme swith in settings page .. 
                        * if dark theme == true .. show dark theme
                        * else .. show light theme 
                        */
-        theme: controller.currentTheme,
-        /**
+          theme: controller.currentTheme,
+          /**
                            * applicaition routes .. routes are Stored in PagesNames Class 
                            */
-        routes: PagesNames.pagesNamesMap,
-        /**
+          routes: PagesNames.pagesNamesMap,
+          /**
                        * remove debug banner
                        */
-        debugShowCheckedModeBanner: false,
-        /**
+          debugShowCheckedModeBanner: false,
+          /**
                        * Application title
                        */
-        title: 'Mavica Academy',
-        /**
+          title: 'Mavica Academy',
+          /**
                        * initial Route
                        */
-        initialRoute: ConstantPagesName.splachPage,
-      );
+          initialRoute: ConstantPagesName.splachPage);
     });
   }
 }

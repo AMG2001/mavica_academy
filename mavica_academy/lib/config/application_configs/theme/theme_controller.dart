@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mavica_academy/config/application_configs/theme/application_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApplicationThemeController extends GetxController {
-  late bool isDark;
-  late SharedPreferences currentThemeSharedPref;
+   late bool isDark;
+   late SharedPreferences currentThemeSharedPref;
 
-  late ThemeData currentTheme;
+   late ThemeData currentTheme;
 
-  Future<void> init() async {
+   Future<void> init() async {
     /**
      * create instance of currentThemeSharedPref
      */
@@ -24,8 +25,7 @@ class ApplicationThemeController extends GetxController {
        */
       await currentThemeSharedPref.setBool("isDark", false);
       isDark = false;
-      currentTheme = ThemeData.light().copyWith(
-          textTheme: TextTheme(button: TextStyle(color: Colors.white)));
+      currentTheme = ApplicationTheme.applicationLightTheme;
       update();
     } else {
       /**
@@ -33,9 +33,9 @@ class ApplicationThemeController extends GetxController {
        */
       isDark = currentThemeSharedPref.getBool("isDark")!;
       if (isDark == true)
-        currentTheme = ThemeData.dark().copyWith();
+        currentTheme = ApplicationTheme.applicationDarkTheme;
       else
-        currentTheme = ThemeData.light().copyWith();
+        currentTheme = ApplicationTheme.applicationLightTheme;
       update();
     }
   }
@@ -43,17 +43,17 @@ class ApplicationThemeController extends GetxController {
 /**
  * change the theme of the application
  */
-  Future<void> changeApplicationTheme(bool val) async {
+   Future<void> changeApplicationTheme(bool val) async {
     /**
      * change value of currentTheme that stored in SharedPref .
      */
     await currentThemeSharedPref.setBool("isDark", val).then((value) {
       isDark = val;
       if (val == true) {
-        currentTheme = ThemeData.dark().copyWith();
+        currentTheme = ApplicationTheme.applicationDarkTheme;
         update();
       } else {
-        currentTheme = ThemeData.light().copyWith();
+        currentTheme = ApplicationTheme.applicationLightTheme;
         update();
       }
     });

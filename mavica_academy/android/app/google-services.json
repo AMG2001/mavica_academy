@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "956115023643-a4uvmdh0rjhau0h4i7c00m9vlu7t2n97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mavica_academy",
+            "certificate_hash": "842a6c3d0f1bcc9c432db0a541e1dad2c92ccb60"
+          }
+        },
+        {
           "client_id": "956115023643-9n9lu848eonpjc91oiscosmpa1qpt4tb.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "956115023643-9n9lu848eonpjc91oiscosmpa1qpt4tb.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "956115023643-t4stj9iecv0rr0sk0hkh12126l05pfka.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mavicaAcademy"
+              }
             }
           ]
         }

@@ -2,10 +2,10 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserLoggedController extends GetxController {
-   static bool userLoggedBool = false;
-   static late SharedPreferences userLoggedSharedPref;
+  static bool userLoggedBool = false;
+  static late SharedPreferences userLoggedSharedPref;
 
-   static Future<void> init() async {
+  static Future<void> init() async {
     userLoggedSharedPref = await SharedPreferences.getInstance();
     if (userLoggedSharedPref.getBool("userLogged") == null) {
       await userLoggedSharedPref.setBool("userLogged", false).then((value) {
@@ -16,11 +16,18 @@ class UserLoggedController extends GetxController {
     }
   }
 
+  static Future<void> logoutUser() async{
+    await userLoggedSharedPref
+        .setBool("userLogged", false)
+        .then((value) => userLoggedBool = false);
+  }
   static Future<void> loggingUser() async {
-    await userLoggedSharedPref.setBool("userLogged", true).then((value) => userLoggedBool=true);
+    await userLoggedSharedPref
+        .setBool("userLogged", true)
+        .then((value) => userLoggedBool = true);
   }
 
-   static bool getUserLoggedBool() {
+  static bool getUserLoggedBool() {
     return userLoggedBool;
   }
 }

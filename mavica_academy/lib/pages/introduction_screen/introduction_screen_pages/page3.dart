@@ -21,7 +21,7 @@ class Page3 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(32.0),
             child: Text(
-              "Joureny will be boring alone , Together .. we can Achieve more and more .. by one Click .",
+              "Journey will be boring alone , Together .. we can Achieve more and more .. by one Click .",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

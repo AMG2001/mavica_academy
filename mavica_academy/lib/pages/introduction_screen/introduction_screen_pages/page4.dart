@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Page4 extends StatelessWidget {
-    AssetImage image;
+  AssetImage image;
   Page4({required this.image});
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Page4 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(32.0),
             child: Text(
-              "Behind every big success , a Dream .. always try behind your dreams .. bring them to real world .",
+              "Behind every success , There's a dream, always chase your dreams and bring them to real world.",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
