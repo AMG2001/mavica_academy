@@ -15,16 +15,22 @@ Future<void> showPostsPageBottomSheet(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.35,
+            height: MediaQuery.of(context).size.height * 0.34,
             width: MediaQuery.of(context).size.width,
             child: Form(
               key: formGlobalKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  /**
+                   * top space 
+                   */
                   SizedBox(
                     height: 12,
                   ),
+                  /**
+                   * Slide gray shift 
+                   */
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
@@ -33,9 +39,15 @@ Future<void> showPostsPageBottomSheet(
                     width: MediaQuery.of(context).size.width * .1,
                     height: MediaQuery.of(context).size.height * .005,
                   ),
+                  /**
+                   * Space between slide shift and post Title TF
+                   */
                   SizedBox(
                     height: 24,
                   ),
+                  /**
+                   * Post Title TF
+                   */
                   Container(
                     width: MediaQuery.of(context).size.width * .8,
                     child: TextFormField(
@@ -53,9 +65,15 @@ Future<void> showPostsPageBottomSheet(
                       ),
                     ),
                   ),
+                  /**
+                   * Space between Post title and post Description
+                   */
                   SizedBox(
                     height: 24,
                   ),
+                  /**
+                   *  Post description TF
+                   */
                   Container(
                     width: MediaQuery.of(context).size.width * .8,
                     child: TextFormField(
@@ -73,16 +91,24 @@ Future<void> showPostsPageBottomSheet(
                       ),
                     ),
                   ),
+                  /**
+                   *  Space between Post description and add post btn
+                   */
                   SizedBox(
                     height: 24,
                   ),
+                  /**
+                   * Add post btn
+                   */
                   ElevatedButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        ),
+                      ),
                       onPressed: () async {
                         if (formGlobalKey.currentState!.validate()) {
                           try {
-                            /**
-                                     * Add new Post with new Index to FireStore
-                                     */
                             await PostsPageFireStore().addPost(
                                 postTitle: postTitleController.text,
                                 postDescription: postDescriptionController.text,
@@ -90,15 +116,17 @@ Future<void> showPostsPageBottomSheet(
                                     "https://drive.google.com/file/d/1tMfqzaw9trqLvFZbhhC9ZmYy9tgAkxnb/view?usp=sharing");
                             print(
                                 "*************************************************\n \t\t\t\t\t\t Post Added successfully\n********************************************");
-                            await PostsPageFireStore()
-                                .increamentLastPostIndex();
+                            Navigator.pop(context);
                           } catch (e) {
                             print("error is while uploading post to fireStore");
                             print(e);
                           }
                         }
                       },
-                      child: Text("Add Post +"))
+                      child: Text(
+                        "Add Post +",
+                        style: TextStyle(fontSize: 16),
+                      ))
                 ],
               ),
             ),

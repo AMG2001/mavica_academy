@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
               _key.currentState!.openDrawer();
             },
             icon: Icon(Icons.menu)),
-        title: Text('Mavica Academy'),
+        title: Text('GoLearn'),
       ),
     );
   }

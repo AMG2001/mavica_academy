@@ -25,7 +25,7 @@ class UserNameTextField extends StatelessWidget {
              * User Name Text Field
              */
         child: TextFormField(
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          style: Theme.of(context).textTheme.subtitle1,
           controller: userNameTextEditingController,
           onEditingComplete: () {
             controller.changeLabelColorToLeave();

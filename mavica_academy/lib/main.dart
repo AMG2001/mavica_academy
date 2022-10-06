@@ -9,6 +9,7 @@ import 'package:mavica_academy/config/user_logs/user_info.dart';
 import 'package:mavica_academy/config/user_logs/user_logged_controller.dart';
 import 'package:mavica_academy/pages/about_us/about_us_page_controller.dart';
 
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -39,11 +40,11 @@ void main() async {
  * Obj that will store Username , email and photo Url
  */
   await UserLogs.init();
- /**
+  /**
   * about us 1 time animation shared pref
   */
   await aboutUsPageController.init();
-   /**
+  /**
    * Firebase launching await .
    */
   await Firebase.initializeApp(
@@ -73,7 +74,7 @@ class MavicaAcademyApp extends StatelessWidget {
           /**
                            * applicaition routes .. routes are Stored in PagesNames Class 
                            */
-          routes: PagesNames.pagesNamesMap,
+          getPages: PagesNames.listOfPages,
           /**
                        * remove debug banner
                        */
@@ -81,7 +82,7 @@ class MavicaAcademyApp extends StatelessWidget {
           /**
                        * Application title
                        */
-          title: 'Mavica Academy',
+          title: 'GoLearn',
           /**
                        * initial Route
                        */

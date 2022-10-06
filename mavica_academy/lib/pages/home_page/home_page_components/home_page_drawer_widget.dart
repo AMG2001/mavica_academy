@@ -10,8 +10,7 @@ import 'package:mavica_academy/services/auth/facebook_auth_controller.dart';
 import 'package:mavica_academy/services/auth/google_auth_controller.dart';
 
 class HomePageDrawerWidget extends StatelessWidget {
-   final aboutUsController =
-      Get.put(aboutUsPageController());
+  final aboutUsController = Get.put(aboutUsPageController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -81,8 +80,7 @@ class HomePageDrawerWidget extends StatelessWidget {
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(4);
-                        Navigator.pushNamed(
-                            context, ConstantPagesName.settingsPage);
+                        Get.toNamed(ConstantPagesName.settingsPage);
                       }),
                   Divider(height: 0, thickness: 1),
                   // Spacer(),
@@ -108,17 +106,16 @@ class HomePageDrawerWidget extends StatelessWidget {
                             Get.offNamed(ConstantPagesName.loginScreenName));
                       }),
                   HomePageDrawerItem(
-                          itemText: "About Us",
-                          itemIcon: Icons.info_outlined,
-                          itemIndex: 7,
-                          itemNavigationPageName: ConstantPagesName.aboutUsPage,
-                          function: () {
-                            BlocProvider.of<DrawerCubit>(context)
-                                .changeSelectedDraerItem(7);
-                            Navigator.pushNamed(
-                                context, ConstantPagesName.aboutUsPage);
-                          }),
-                   
+                      itemText: "About Us",
+                      itemIcon: Icons.info_outlined,
+                      itemIndex: 7,
+                      itemNavigationPageName: ConstantPagesName.aboutUsPage,
+                      function: () {
+                        BlocProvider.of<DrawerCubit>(context)
+                            .changeSelectedDraerItem(7);
+                        Navigator.pushNamed(
+                            context, ConstantPagesName.aboutUsPage);
+                      }),
                 ],
               );
             },

@@ -1,4 +1,0 @@
-// splach screen ->
-repo -> https://github.com/Flutter-ui-dev/Flutter-ui-dev/tree/main/native-splash-screen
-video -> https://www.youtube.com/watch?v=ySaVFCpK4M8&ab_channel=FlutterUIDev
-

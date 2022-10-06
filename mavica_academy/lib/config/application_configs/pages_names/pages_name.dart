@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:mavica_academy/pages/about_us/about_us_page.dart';
 import 'package:mavica_academy/pages/account_page/account_page.dart';
@@ -13,17 +14,50 @@ import 'package:mavica_academy/pages/settings_page/settings_page.dart';
 import 'package:mavica_academy/pages/sign_up_page/sign_up_page.dart';
 
 class PagesNames {
-  static Map<String, Widget Function(BuildContext)> pagesNamesMap = {
-    ConstantPagesName.homePageScreenName: (context) => HomePage(),
-    ConstantPagesName.coursesPage: (context) => CoursesPage(),
-    ConstantPagesName.postsPage: (context) => PostsPage(),
-    ConstantPagesName.notificationsPage: (context) => NotificationsPage(),
-    ConstantPagesName.settingsPage: (context) => SettingsPage(),
-    ConstantPagesName.accountPage: (context) => AccountPage(),
-    ConstantPagesName.aboutUsPage: (context) => AboutUsPage(),
-    ConstantPagesName.loginScreenName: (context) => LoginScreen(),
-    ConstantPagesName.introductionScreenName: (context) => IntroductionScreen(),
-    ConstantPagesName.splachPage: (context) => AnimatedSplachPage(),
-    ConstantPagesName.signUpPage:(context) =>SignUpPage()
-  };
+  static List<GetPage> listOfPages = [
+    GetPage(
+        name: ConstantPagesName.coursesPage,
+        page: () => CoursesPage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.homePageScreenName,
+        page: () => HomePage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.postsPage,
+        page: () => PostsPage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.notificationsPage,
+        page: () => NotificationsPage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.settingsPage,
+        page: () => SettingsPage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.accountPage,
+        page: () => AccountPage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.aboutUsPage,
+        page: () => AboutUsPage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.loginScreenName,
+        page: () => LoginScreen(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.introductionScreenName,
+        page: () => IntroductionScreen(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.splachPage,
+        page: () => AnimatedSplachPage(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: ConstantPagesName.signUpPage,
+        page: () => SignUpPage(),
+        transition: Transition.leftToRight),
+  ];
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mavica_academy/pages/login_page/login_page_components/login_page_buttons/facebook_login_button.dart';
 import 'package:mavica_academy/pages/login_page/login_page_components/login_page_buttons/google_signin_button.dart';
 import 'package:mavica_academy/pages/login_page/login_page_components/login_page_buttons/register_and_forget_password_row.dart';
@@ -15,7 +14,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -26,29 +24,6 @@ class LoginScreen extends StatelessWidget {
                 /**
                    * Container that contain login apge header image
                    */
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: Padding(
-                              padding: EdgeInsets.all(16),
-                              child: RotatedBox(
-                                quarterTurns: 2,
-                                child: FaIcon(
-                                    FontAwesomeIcons.arrowRightFromBracket),
-                              ))),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Padding(
-                              padding: EdgeInsets.all(16),
-                              child: FaIcon(FontAwesomeIcons.sun))),
-                    ],
-                  ),
-                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
@@ -70,7 +45,6 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         "Login Now",
                         style: TextStyle(
-                            color: Colors.black,
                             fontSize: MediaQuery.of(context).size.width * .06,
                             fontWeight: FontWeight.w500),
                       ),
@@ -129,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(
                               height: MediaQuery.of(context).size.width * .03,
                             ),
-                            SignInButton(),
+                            SignInButton(emailController: userNameTextEditingController,passwordController: passwordTextEditingController,),
                           ],
                         ),
                       )

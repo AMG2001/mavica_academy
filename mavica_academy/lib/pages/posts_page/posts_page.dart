@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mavica_academy/config/application_configs/colors/defaultColors.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_page_bottom_sheet.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container.dart';
+import 'package:mavica_academy/pages/posts_page/posts_page_controller.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page_servies/fire_store.dart';
 
 class PostsPage extends StatelessWidget {
@@ -17,19 +20,9 @@ class PostsPage extends StatelessWidget {
    * post description controller .. take input and send it to firestore
    */
   TextEditingController postDescriptionController = TextEditingController();
-  /**
-   * stream on firestore posts .. any new post add on firestore will appear for all users using stream
-   */
-  final Stream<QuerySnapshot> _postsStream =
-      FirebaseFirestore.instance.collection('posts').snapshots();
-  /**
-       * posts page constructor
-       */
-  PostsPage({Key? key}) : super(key: key);
-/**
- * last postIndex variable :
- */
-  late int last_index;
+
+  final controller = Get.put(PostsPageController(), permanent: true);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,43 +52,68 @@ class PostsPage extends StatelessWidget {
         title: Text('Posts'),
       ),
       body: SafeArea(
-        child: Center(),
-        /**
-         * Stream Builder to retrieve and Build Posts ->
-         */
-        // child: StreamBuilder<QuerySnapshot>(
-        //   stream: _postsStream,
-        //   builder:
-        //       (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        //     if (snapshot.hasError) {
-        //       return Center(child: Text('Something went wrong'));
-        //     }
+        child: GetBuilder<PostsPageController>(
+          builder: (z) {
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              height: Get.height,
+              child: StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection("posts")
+                    .orderBy("postingTime")
+                    .snapshots(),
+                builder: ((context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                          color: DefaultColors.defaultRed),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text("There is some thing wrong"),
+                    );
+                  }
 
-        //     if (snapshot.connectionState == ConnectionState.waiting) {
-        //       return Center(child: Text("Loading"));
-        //     }
+                  /**
+                         * snapshot : 
+                         */
+                  var querySnapshot = snapshot.data!.docs;
+                  /**
+                       * get every document alone from the whole snapshot: 
+                       */
 
-        //      return ListView.builder(itemBuilder: (context,index){
-        //       return PostContainer(
-        //         postTitle: snapshot.data.documents[index]['post_title'],
-        //       );
-        //      }, itemCount: snapshot.data.docs.length);
-        //      //
-        //      // ListView(
-        //     //   children: snapshot.data!.docs.map((DocumentSnapshot document) {
-        //     //     Map<String, dynamic> postInfo =
-        //     //         document.data()! as Map<String, dynamic>;
+                  controller.fetchedPostsList.clear();
+                  querySnapshot.forEach((document) {
+                    controller.fetchedPostsList.add(
+                      PostContainer(
+                        postingTime: document.get('postingTime'),
+                        postTitle: document.get('postTitle'),
+                        postDescription: document.get('postDescription'),
+                        postId: document.get('postId'),
+                        disLike: document.get('dislike'),
+                        isDisliked: document.get('isDisliked'),
+                        isLiked: document.get('isLiked'),
+                        isLoved: document.get('isLoved'),
+                        like: document.get('like'),
+                        love: document.get('love'),
+                        userImageLink: document.get('userImageLink'),
+                      ),
+                    );
+                  });
 
-        //     //     return PostContainer(
-        //     //         postTitle: postInfo['post_title'],
-        //     //         postDescription: postInfo['post_description'],
-        //     //         postIndex: postInfo['post_index'],
-        //     //         postDocumentId: document.id);
-        //     //     print("adding posts done ##");
-        //     //   }).toList(growable: true),
-        //     // );
-        //   },
-        // ),
+                  return Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: ListView(
+                        reverse: snapshot.data!.docs.length > 4 ? true : false,
+                        children: controller.fetchedPostsList),
+                  );
+                }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,6 +1,12 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserLogs {
+  /**
+   *  The data that we need from the user are :
+   * 1. his name 
+   * 2. his email
+   * 3. his accountImageUrl .
+   */
   static late SharedPreferences userNameSharedPref,
       emailSharedPref,
       photoUrlSharedPref;

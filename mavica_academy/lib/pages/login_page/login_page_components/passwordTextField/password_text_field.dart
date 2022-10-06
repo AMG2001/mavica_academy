@@ -27,7 +27,7 @@ class PasswordTextField extends StatelessWidget {
              * Password Text Field
              */
         child: TextFormField(
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          style: Theme.of(context).textTheme.subtitle1,
           controller: passwordTextEditingController,
           onEditingComplete: () {
             print("onEditingComplete Called");

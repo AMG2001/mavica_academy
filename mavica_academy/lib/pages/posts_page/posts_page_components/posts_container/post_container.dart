@@ -1,10 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mavica_academy/pages/posts_page/posts_page.dart';
+import 'package:get/get.dart';
+import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container_components/dislike_button.dart';
+import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container_components/buttons/like_button/like_button.dart';
+import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container_components/love_button.dart';
+import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container_controller.dart';
+import 'package:mavica_academy/pages/posts_page/posts_page_controller.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page_servies/fire_store.dart';
 
-class PostContainer extends StatelessWidget {
+class PostContainer extends StatefulWidget {
   /**
    * post title taken from bottom sheet
    */
@@ -32,21 +38,20 @@ class PostContainer extends StatelessWidget {
   /**
    * postIndex value come from firestore
    */
-  int postIndex;
-  /**
-   * documentId value come from firestore
-   */
-  String postDocumentId;
-
+  String postId;
+  bool isLiked;
+  bool isLoved;
+  bool isDisliked;
+  late Timestamp postingTime;
   PostContainer({
     /**
      * postTitle from bottom sheet
      */
-    required this.postTitle,
+    this.postTitle = "",
     /**
      * postDescription from bottom sheet
      */
-    required this.postDescription,
+    this.postDescription = "",
     /**
      * userImage from login user Data
      */
@@ -54,18 +59,42 @@ class PostContainer extends StatelessWidget {
     this.like = 0,
     this.love = 0,
     this.disLike = 0,
+    this.isDisliked = false,
+    this.isLiked = false,
+    this.isLoved = false,
+    required this.postingTime,
     /**
      * Post Index fotm lastPostIndex Collection
      */
-    required this.postIndex,
-    /**
-     * postDocuemntId from posts Collection
-     */
-    required this.postDocumentId,
+    required this.postId,
   });
 
+  Map<String, dynamic> postContainerToJson() {
+    Map<String, dynamic> map = {
+      'userImageLink': userImageLink,
+      'postTitle': postTitle,
+      'postDescription': postDescription,
+      'like': like,
+      'love': love,
+      'dislike': disLike,
+      'postId': postId,
+      'isLiked': isLiked,
+      'isLoved': isLoved,
+      'isDisliked': isDisliked,
+      "postingTime": postingTime
+    };
+    return map;
+  }
+
+  @override
+  State<PostContainer> createState() => _PostContainerState();
+}
+
+class _PostContainerState extends State<PostContainer> {
   @override
   Widget build(BuildContext context) {
+    final postPageController = Get.put(PostsPageController());
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
@@ -73,124 +102,74 @@ class PostContainer extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        //   child: Container(
-        //     margin: EdgeInsets.all(16),
-        //     child: Column(children: [
-        //       Row(
-        //         children: [
-        //           /**
-        //                  * Post User
-        //                  */
-        //           CircleAvatar(
-        //             backgroundImage: NetworkImage(userImageLink),
-        //             radius: 45,
-        //           ),
-        //           SizedBox(width: 16),
-        //           /**
-        //                  * Post Title
-        //                  */
-        //           Text(
-        //             postTitle,
-        //             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        //           )
-        //         ],
-        //       ),
-        //       /**
-        //              * Post Description
-        //              */
-        //       Padding(
-        //         padding: const EdgeInsets.all(16.0),
-        //         child: Text(postDescription),
-        //       ),
-        //       /**
-        //              * Row Of Reactions
-        //              */
-        //       Row(
-        //         mainAxisAlignment: MainAxisAlignment.end,
-        //         children: [
-        //           Column(
-        //             crossAxisAlignment: CrossAxisAlignment.center,
-        //             mainAxisSize: MainAxisSize.min,
-        //             children: [
-        //               IconButton(
-        //                 onPressed: () {
-        //                   // PostsPageFireStore()
-        //                   //     .postsCollection
-        //                   //     .doc(postDocumentId)
-        //                   //     .update({'like': like + 1});
-        //                 },
-        //                 icon: FaIcon(FontAwesomeIcons.thumbsUp,
-        //                     color: Colors.blueAccent),
-        //               ),
-        //               Text(
-        //                 (PostsPageFireStore()
-        //                         .postsCollection
-        //                         .doc(postDocumentId)
-        //                         .get() as Map)['like']
-        //                     .toString(),
-        //                 style: TextStyle(color: Colors.grey),
-        //               )
-        //             ],
-        //           ),
-        //           SizedBox(
-        //             width: 16,
-        //           ),
-        //           Column(
-        //             crossAxisAlignment: CrossAxisAlignment.center,
-        //             mainAxisSize: MainAxisSize.min,
-        //             children: [
-        //               IconButton(
-        //                 onPressed: () {
-        //                   PostsPageFireStore()
-        //                       .postsCollection
-        //                       .doc(postDocumentId)
-        //                       .update({'love': love + 1});
-        //                 },
-        //                 icon: FaIcon(FontAwesomeIcons.heartCirclePlus,
-        //                     color: Colors.red),
-        //               ),
-        //               Text(
-        //                 (PostsPageFireStore()
-        //                         .postsCollection
-        //                         .doc(postDocumentId)
-        //                         .get() as Map)['love']
-        //                     .toString(),
-        //                 style: TextStyle(color: Colors.grey),
-        //               )
-        //             ],
-        //           ),
-        //           SizedBox(
-        //             width: 16,
-        //           ),
-        //           Column(
-        //             crossAxisAlignment: CrossAxisAlignment.center,
-        //             mainAxisSize: MainAxisSize.min,
-        //             children: [
-        //               IconButton(
-        //                 onPressed: () {
-        //                   PostsPageFireStore()
-        //                       .postsCollection
-        //                       .doc(postDocumentId)
-        //                       .update({'dislike': disLike + 1});
-        //                 },
-        //                 icon: FaIcon(FontAwesomeIcons.thumbsDown,
-        //                     color: Colors.black),
-        //               ),
-        //               Text(
-        //                 (PostsPageFireStore()
-        //                         .postsCollection
-        //                         .doc(postDocumentId)
-        //                         .get() as Map)['dislike']
-        //                     .toString(),
-        //                 style: TextStyle(color: Colors.grey),
-        //               )
-        //             ],
-        //           ),
-        //         ],
-        //       ),
-        //     ]),
-        //   ),
-        //
+        child: Container(
+          margin: EdgeInsets.all(16),
+          child: Column(children: [
+            /**
+               * Row of user image and post Title
+               */
+            Row(
+              children: [
+                /**
+                         * Post User
+                         */
+                CircleAvatar(
+                  backgroundImage: NetworkImage(widget.userImageLink),
+                  radius: 45,
+                ),
+                SizedBox(width: 16),
+                /**
+                         * Post Title
+                         */
+                Flexible(
+                  child: Text(
+                    widget.postTitle,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+            /**
+                     * Post Description
+                     */
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(widget.postDescription),
+            ),
+            /**
+                     * Row Of Reaction buttons -> 
+                     */
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                /**
+                   * 
+                   * Column if like icon and number of reactions
+                   */
+                LikeButton(
+                  postId: widget.postId,
+                  like: widget.like,
+                  isLiked: widget.isLiked,
+                 
+                ),
+                /**
+                   * Column of love shape and number of love reactions .
+                   */
+                LoveButton(
+                    postId: widget.postId,
+                    love: widget.love,
+                    isLoved: widget.isLoved),
+                /**
+                   * column of dislike shape and number of reactions .
+                   */
+                DislikeButton(
+                    postId: widget.postId,
+                    isDisliked: widget.isDisliked,
+                    disLike: widget.disLike)
+              ],
+            ),
+          ]),
+        ),
       ),
     );
   }
