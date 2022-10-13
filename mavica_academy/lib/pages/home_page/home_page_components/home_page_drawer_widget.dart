@@ -6,7 +6,6 @@ import 'package:mavica_academy/pages/about_us/about_us_page_controller.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/drawer/drawer_cubit/drawer_cubit_cubit.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/drawer/drawer_item.dart';
 import 'package:mavica_academy/pages/home_page/home_page_components/student_info_container.dart';
-import 'package:mavica_academy/services/auth/facebook_auth_controller.dart';
 import 'package:mavica_academy/services/auth/google_auth_controller.dart';
 
 class HomePageDrawerWidget extends StatelessWidget {
@@ -29,92 +28,104 @@ class HomePageDrawerWidget extends StatelessWidget {
                       itemIcon: Icons.home_outlined,
                       itemIndex: 0,
                       itemNavigationPageName:
-                          ConstantPagesName.homePageScreenName,
+                          PagesNames.homePageScreenName,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(0);
                         Navigator.pushNamed(
-                            context, ConstantPagesName.homePageScreenName);
+                            context, PagesNames.homePageScreenName);
                       }),
                   HomePageDrawerItem(
                       itemText: "Courses",
                       itemIcon: Icons.local_library_outlined,
                       itemIndex: 1,
-                      itemNavigationPageName: ConstantPagesName.coursesPage,
+                      itemNavigationPageName: PagesNames.coursesPage,
                       function: () {
                         {
                           BlocProvider.of<DrawerCubit>(context)
                               .changeSelectedDraerItem(1);
                           Navigator.pushNamed(
-                              context, ConstantPagesName.coursesPage);
+                              context, PagesNames.coursesPage);
                         }
                       }),
                   HomePageDrawerItem(
                       itemText: "Posts",
                       itemIcon: Icons.post_add_outlined,
                       itemIndex: 2,
-                      itemNavigationPageName: ConstantPagesName.postsPage,
+                      itemNavigationPageName: PagesNames.postsPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(2);
                         Navigator.pushNamed(
-                            context, ConstantPagesName.postsPage);
+                            context, PagesNames.postsPage);
                       }),
                   HomePageDrawerItem(
                       itemText: "Notifications",
                       itemIcon: Icons.notification_add_outlined,
                       itemIndex: 3,
                       itemNavigationPageName:
-                          ConstantPagesName.notificationsPage,
+                          PagesNames.notificationsPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(3);
                         Navigator.pushNamed(
-                            context, ConstantPagesName.notificationsPage);
+                            context, PagesNames.notificationsPage);
+                      }),
+                  HomePageDrawerItem(
+                      itemText: "Tasks",
+                      itemIcon: Icons.add_task_sharp,
+                      itemIndex: 4,
+                      itemNavigationPageName:
+                          PagesNames.notificationsPage,
+                      function: () {
+                        BlocProvider.of<DrawerCubit>(context)
+                            .changeSelectedDraerItem(3);
+                        Navigator.pushNamed(
+                            context, PagesNames.notificationsPage);
                       }),
                   HomePageDrawerItem(
                       itemText: "Settings",
                       itemIcon: Icons.info_outlined,
-                      itemIndex: 4,
-                      itemNavigationPageName: ConstantPagesName.settingsPage,
+                      itemIndex: 5,
+                      itemNavigationPageName: PagesNames.settingsPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(4);
-                        Get.toNamed(ConstantPagesName.settingsPage);
+                        Get.toNamed(PagesNames.settingsPage);
                       }),
                   Divider(height: 0, thickness: 1),
                   // Spacer(),
                   HomePageDrawerItem(
                       itemText: "Account",
                       itemIcon: Icons.person_outline_outlined,
-                      itemIndex: 5,
-                      itemNavigationPageName: ConstantPagesName.accountPage,
+                      itemIndex: 6,
+                      itemNavigationPageName: PagesNames.accountPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(5);
                         Navigator.pushNamed(
-                            context, ConstantPagesName.accountPage);
+                            context, PagesNames.accountPage);
                       }),
 
                   HomePageDrawerItem(
                       itemText: "Logout",
                       itemIcon: Icons.logout_outlined,
-                      itemIndex: 6,
-                      itemNavigationPageName: ConstantPagesName.loginScreenName,
+                      itemIndex: 7,
+                      itemNavigationPageName: PagesNames.loginScreenName,
                       function: () async {
                         await GoogleAuthController().signOut().then((value) =>
-                            Get.offNamed(ConstantPagesName.loginScreenName));
+                            Get.offNamed(PagesNames.loginScreenName));
                       }),
                   HomePageDrawerItem(
                       itemText: "About Us",
                       itemIcon: Icons.info_outlined,
-                      itemIndex: 7,
-                      itemNavigationPageName: ConstantPagesName.aboutUsPage,
+                      itemIndex: 8,
+                      itemNavigationPageName: PagesNames.aboutUsPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(7);
                         Navigator.pushNamed(
-                            context, ConstantPagesName.aboutUsPage);
+                            context, PagesNames.aboutUsPage);
                       }),
                 ],
               );

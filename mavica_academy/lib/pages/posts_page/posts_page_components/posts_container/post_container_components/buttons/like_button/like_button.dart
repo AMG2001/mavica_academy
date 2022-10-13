@@ -8,6 +8,24 @@ class LikeButton extends StatefulWidget {
   String postId;
   LikeButton({required this.postId, required this.isLiked, required this.like});
 
+  Future<void> likeButtonClicked() async {
+    if (isLiked == false) {
+      await PostsPageFireStore()
+          .postsCollection
+          .doc(postId)
+          .update({'like': like + 1, "isLiked": true});
+      isLiked = !isLiked;
+      like = like + 1;
+    } else {
+      await PostsPageFireStore()
+          .postsCollection
+          .doc(postId)
+          .update({'like': like - 1, "isLiked": false});
+      isLiked = !isLiked;
+      like = like - 1;
+    }
+  }
+
   @override
   State<LikeButton> createState() => _LikeButtonState();
 }
@@ -18,24 +36,11 @@ class _LikeButtonState extends State<LikeButton> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: [   
+
         IconButton(
           onPressed: () async {
-            if (widget.isLiked == false) {
-              await PostsPageFireStore()
-                  .postsCollection
-                  .doc(widget.postId)
-                  .update({'like': widget.like + 1, "isLiked": true});
-              widget.isLiked = !widget.isLiked;
-              widget.like = widget.like + 1;
-            } else {
-              await PostsPageFireStore()
-                  .postsCollection
-                  .doc(widget.postId)
-                  .update({'like': widget.like - 1, "isLiked": false});
-              widget.isLiked = !widget.isLiked;
-              widget.like = widget.like - 1;
-            }
+            await widget.likeButtonClicked();
             setState(() {});
           },
           icon: widget.isLiked

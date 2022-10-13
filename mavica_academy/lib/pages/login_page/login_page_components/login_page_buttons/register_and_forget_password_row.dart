@@ -35,7 +35,7 @@ class RegisterAndForgetPasswordRow extends StatelessWidget {
              * Register Button Function
              */
             onPressed: () {
-              Get.toNamed(ConstantPagesName.signUpPage);
+              Get.toNamed(PagesNames.signUpPage);
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mavica_academy/config/application_configs/first_launch.dart';
-import 'package:mavica_academy/config/application_configs/pages_names/pages_name.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:mavica_academy/pages/introduction_screen/introduction_screen_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -89,7 +88,7 @@ class BottomSlider extends StatelessWidget {
                           if (controller.index == 4) {
                             await FirstLaunch.changeFirstLaunchValue()
                                 .then((value) {
-                              Get.offNamed(ConstantPagesName.loginScreenName);
+                              Get.offNamed(PagesNames.loginScreenName);
                               print("value of first laucn changed !!");
                             });
                           } else {

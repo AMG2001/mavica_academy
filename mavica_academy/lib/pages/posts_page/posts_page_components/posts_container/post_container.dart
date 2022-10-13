@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container_components/dislike_button.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container_components/buttons/like_button/like_button.dart';
 import 'package:mavica_academy/pages/posts_page/posts_page_components/posts_container/post_container_components/love_button.dart';
@@ -140,32 +141,39 @@ class _PostContainerState extends State<PostContainer> {
                      * Row Of Reaction buttons -> 
                      */
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                /**
+                Text(
+                  DateFormat.yMd().add_jm().format(widget.postingTime.toDate()),
+                  style: TextStyle(color: Colors.grey),
+                ),
+                Row(
+                  children: [
+                    /**
                    * 
                    * Column if like icon and number of reactions
                    */
-                LikeButton(
-                  postId: widget.postId,
-                  like: widget.like,
-                  isLiked: widget.isLiked,
-                 
-                ),
-                /**
+                    LikeButton(
+                      postId: widget.postId,
+                      like: widget.like,
+                      isLiked: widget.isLiked,
+                    ),
+                    /**
                    * Column of love shape and number of love reactions .
                    */
-                LoveButton(
-                    postId: widget.postId,
-                    love: widget.love,
-                    isLoved: widget.isLoved),
-                /**
+                    LoveButton(
+                        postId: widget.postId,
+                        love: widget.love,
+                        isLoved: widget.isLoved),
+                    /**
                    * column of dislike shape and number of reactions .
                    */
-                DislikeButton(
-                    postId: widget.postId,
-                    isDisliked: widget.isDisliked,
-                    disLike: widget.disLike)
+                    DislikeButton(
+                        postId: widget.postId,
+                        isDisliked: widget.isDisliked,
+                        disLike: widget.disLike)
+                  ],
+                )
               ],
             ),
           ]),

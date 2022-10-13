@@ -18,78 +18,82 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              /**
-               * main Column
-               */
-              child: Form(
-                key: sigUpFormState,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    /**
-                     * Page Header Widget
-                     */
-                    PageHeader(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        /**
-                         * First Name TF Column
-                         */
-                        FirstNameTF(firstNameController: firstNameController),
-                        /**
-                         * Last Name TF Column
-                         */
-                        LastNameTF(lastNameController: lastNameController),
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .02,
-                    ),
-                    Text("Email"),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .01,
-                    ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            /**
+             * main Column
+             */
+            child: GetBuilder<SignUpPageController>(
+              init:SignUpPageController() ,
+              builder: (controller) {
+                return Form(
+                  autovalidateMode: controller.validationMode,
+                  key: sigUpFormState,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /**
+                       * Page Header Widget
+                       */
+                      PageHeader(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          /**
+                           * First Name TF Column
+                           */
+                          FirstNameTF(firstNameController: firstNameController),
+                          /**
+                           * Last Name TF Column
+                           */
+                          LastNameTF(lastNameController: lastNameController),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .02,
+                      ),
+                      Text("Email"),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .01,
+                      ),
 /**
-                     * Email TF
-                     */
-                    EmailTF(emailController: emailController),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .02,
-                    ),
-                    /**
-                             * Password TF
-                             */
+                       * Email TF
+                       */
+                      EmailTF(emailController: emailController),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .02,
+                      ),
+                      /**
+                               * Password TF
+                               */
 
-                    Text("Password"),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .01,
-                    ),
-                    PasswordTF(
-                        passwordController: passwordController,
-                        signUpPageController: signUpPageController),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .02,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .02,
-                    ),
-                    SignUpButton(
-                        sigUpFormState: sigUpFormState,
-                        emailController: emailController,
-                        passwordController: passwordController,
-                        firstNameController: firstNameController,
-                        lastNameController: lastNameController)
-                  ],
-                ),
-              ),
+                      Text("Password"),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .01,
+                      ),
+                      PasswordTF(
+                          passwordController: passwordController,
+                          signUpPageController: signUpPageController),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .02,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .02,
+                      ),
+                      SignUpButton(
+                          sigUpFormState: sigUpFormState,
+                          emailController: emailController,
+                          passwordController: passwordController,
+                          firstNameController: firstNameController,
+                          lastNameController: lastNameController)
+                    ],
+                  ),
+                );
+              }
             ),
           ),
         ),

@@ -38,7 +38,7 @@ class SignInWithEmailAndPassword {
                 /**
                * after showing animation , move to home page
                */
-                Get.offNamed(ConstantPagesName.homePageScreenName);
+                Get.offNamed(PagesNames.homePageScreenName);
               });
               return Padding(
                 padding: const EdgeInsets.all(12.0),

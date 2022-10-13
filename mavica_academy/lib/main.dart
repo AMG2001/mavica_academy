@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mavica_academy/config/application_configs/first_launch.dart';
-import 'package:mavica_academy/config/application_configs/pages_names/pages_name.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mavica_academy/config/application_configs/theme/theme_controller.dart';
@@ -86,7 +85,7 @@ class MavicaAcademyApp extends StatelessWidget {
           /**
                        * initial Route
                        */
-          initialRoute: ConstantPagesName.splachPage);
+          initialRoute: PagesNames.splachPage);
     });
   }
 }

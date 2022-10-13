@@ -59,7 +59,7 @@ class GoogleSignInButton extends StatelessWidget {
             /**
              * Navigate to home Screen - Welcome in app
              */
-            Get.offNamed(ConstantPagesName.homePageScreenName);
+            Get.offNamed(PagesNames.homePageScreenName);
           });
         } catch (e) {
           /**

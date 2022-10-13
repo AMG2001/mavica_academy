@@ -4,15 +4,18 @@ import 'package:get/get.dart';
 import 'package:mavica_academy/config/application_configs/colors/defaultColors.dart';
 
 class SignUpPageController extends GetxController {
+  var validationMode = AutovalidateMode.disabled;
+  bool securePassword = true;
+  FaIcon eyeIcon = FaIcon(FontAwesomeIcons.eyeSlash);
+  Color eyeIconColor = Colors.grey;
+
   SignUpPageController() {
     eyeIcon = FaIcon(
       FontAwesomeIcons.eyeSlash,
       color: eyeIconColor,
     );
   }
-  bool securePassword = true;
-  FaIcon eyeIcon = FaIcon(FontAwesomeIcons.eyeSlash);
-  Color eyeIconColor = Colors.grey;
+
   void changeShowPasswordValue() {
     securePassword = !securePassword;
     if (securePassword == true) {
@@ -29,6 +32,11 @@ class SignUpPageController extends GetxController {
       );
     }
 
+    update();
+  }
+
+  void changeValidationMode() {
+    validationMode = AutovalidateMode.onUserInteraction;
     update();
   }
 }

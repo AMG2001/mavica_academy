@@ -11,12 +11,19 @@ class AnimatedSplachPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("value from First launch = ${FirstLaunch.firstLaunchDone()}");
+    print("value from First launch Done = ${FirstLaunch.firstLaunchDone()}");
     return GetBuilder<AnimatedSplashScreenController>(
         init: AnimatedSplashScreenController(),
         builder: (controller) {
           return AnimatedSplashScreen(
-            splash: 'assets/application/spalsh_screen_background.png',
+            duration: 2000,
+            splash: Image(
+              image:
+                  AssetImage('assets/application/spalsh_screen_background.png'),
+              fit: BoxFit.cover,
+              height: Get.height,
+              width: Get.width,
+            ),
             centered: true,
             splashIconSize: MediaQuery.of(context).size.height,
             splashTransition: SplashTransition.fadeTransition,

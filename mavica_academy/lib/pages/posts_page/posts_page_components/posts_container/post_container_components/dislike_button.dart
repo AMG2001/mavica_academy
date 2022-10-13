@@ -9,6 +9,24 @@ class DislikeButton extends StatefulWidget {
   DislikeButton(
       {required this.postId, required this.isDisliked, required this.disLike});
 
+  Future<void> dislikeButtonClicked() async {
+    if (isDisliked == false) {
+      await PostsPageFireStore()
+          .postsCollection
+          .doc(postId)
+          .update({'dislike': disLike + 1, "isDisliked": true});
+      isDisliked = !isDisliked;
+      disLike = disLike + 1;
+    } else {
+      await PostsPageFireStore()
+          .postsCollection
+          .doc(postId)
+          .update({'dislike': disLike - 1, "isDisliked": false});
+      isDisliked = !isDisliked;
+      disLike = disLike - 1;
+    }
+  }
+
   @override
   State<DislikeButton> createState() => _DislikeButtonState();
 }
@@ -22,25 +40,12 @@ class _DislikeButtonState extends State<DislikeButton> {
       children: [
         IconButton(
           onPressed: () async {
-            if (widget.isDisliked == false) {
-              await PostsPageFireStore()
-                  .postsCollection
-                  .doc(widget.postId)
-                  .update({'dislike': widget.disLike + 1, "isDisliked": true});
-              widget.isDisliked = !widget.isDisliked;
-              widget.disLike = widget.disLike + 1;
-            } else {
-              await PostsPageFireStore()
-                  .postsCollection
-                  .doc(widget.postId)
-                  .update({'dislike': widget.disLike - 1, "isDisliked": false});
-              widget.isDisliked = !widget.isDisliked;
-              widget.disLike = widget.disLike - 1;
-            }
+            await widget.dislikeButtonClicked();
             setState(() {});
           },
           icon: widget.isDisliked
-              ? const FaIcon(FontAwesomeIcons.solidThumbsDown, color: Colors.black)
+              ? const FaIcon(FontAwesomeIcons.solidThumbsDown,
+                  color: Colors.black)
               : const FaIcon(FontAwesomeIcons.thumbsDown, color: Colors.black),
         ),
         Text(

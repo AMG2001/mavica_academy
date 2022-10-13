@@ -5,8 +5,11 @@ import 'package:get/get.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:mavica_academy/config/user_logs/user_info.dart';
 import 'package:mavica_academy/config/user_logs/user_logged_controller.dart';
+import 'package:mavica_academy/pages/sign_up_page/sing_up_page_controller.dart';
+
 class SignUpButton extends StatelessWidget {
-  const SignUpButton({
+  final signUpPageController = Get.put(SignUpPageController());
+  SignUpButton({
     Key? key,
     required this.sigUpFormState,
     required this.emailController,
@@ -54,11 +57,12 @@ class SignUpButton extends StatelessWidget {
                       photoUrl:
                           "https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg")
                   .then((value) async {
-                await UserLoggedController.loggingUser().then(
-                    (value) => Get.offNamed(
-                        ConstantPagesName.homePageScreenName));
+                await UserLoggedController.loggingUser().then((value) =>
+                    Get.offNamed(PagesNames.homePageScreenName));
               });
             });
+          } else {
+            signUpPageController.changeValidationMode();
           }
         },
       ),
