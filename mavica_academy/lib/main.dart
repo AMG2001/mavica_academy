@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mavica_academy/Todo_App/done_screen/done_screen_controller.dart';
+import 'package:mavica_academy/Todo_App/services/database.dart';
+import 'package:mavica_academy/Todo_App/tasks_screen/tasks_screen_controller.dart';
 import 'package:mavica_academy/config/application_configs/first_launch.dart';
 import 'package:mavica_academy/config/application_configs/pages_names/pages_names.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,7 +10,6 @@ import 'package:mavica_academy/config/application_configs/theme/theme_controller
 import 'package:mavica_academy/config/user_logs/user_info.dart';
 import 'package:mavica_academy/config/user_logs/user_logged_controller.dart';
 import 'package:mavica_academy/pages/about_us/about_us_page_controller.dart';
-
 
 import 'firebase_options.dart';
 
@@ -52,6 +54,16 @@ void main() async {
   /**
    * runApp method
    */
+  final tasksScreenController = Get.put(TasksScreenController());
+  final doneScreenController = Get.put(DoneScreenController());
+  await TodoDatabaseClass.createDatabase();
+  tasksScreenController.tasks = await TodoDatabaseClass.showNotFinishedTasks();
+  doneScreenController.doneTasks = await TodoDatabaseClass.showDoneTasks();
+  print(" tasksScreenController.tasks : ");
+  print(tasksScreenController.tasks);
+  print("  doneScreenController.doneTasks : ");
+  print(doneScreenController.doneTasks);
+
   runApp(MavicaAcademyApp());
 }
 

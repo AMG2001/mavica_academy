@@ -27,13 +27,12 @@ class HomePageDrawerWidget extends StatelessWidget {
                       itemText: "Home",
                       itemIcon: Icons.home_outlined,
                       itemIndex: 0,
-                      itemNavigationPageName:
-                          PagesNames.homePageScreenName,
+                      itemNavigationPageName: PagesNames.homePageScreenName,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(0);
-                        Navigator.pushNamed(
-                            context, PagesNames.homePageScreenName);
+                        Get.back();
+                        Get.toNamed(PagesNames.homePageScreenName);
                       }),
                   HomePageDrawerItem(
                       itemText: "Courses",
@@ -44,8 +43,8 @@ class HomePageDrawerWidget extends StatelessWidget {
                         {
                           BlocProvider.of<DrawerCubit>(context)
                               .changeSelectedDraerItem(1);
-                          Navigator.pushNamed(
-                              context, PagesNames.coursesPage);
+                          Get.back();
+                          Get.toNamed(PagesNames.coursesPage);
                         }
                       }),
                   HomePageDrawerItem(
@@ -56,32 +55,30 @@ class HomePageDrawerWidget extends StatelessWidget {
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(2);
-                        Navigator.pushNamed(
-                            context, PagesNames.postsPage);
+                        Get.back();
+                        Get.toNamed(PagesNames.postsPage);
                       }),
                   HomePageDrawerItem(
                       itemText: "Notifications",
                       itemIcon: Icons.notification_add_outlined,
                       itemIndex: 3,
-                      itemNavigationPageName:
-                          PagesNames.notificationsPage,
+                      itemNavigationPageName: PagesNames.notificationsPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(3);
-                        Navigator.pushNamed(
-                            context, PagesNames.notificationsPage);
+                        Get.back();
+                        Get.toNamed(PagesNames.notificationsPage);
                       }),
                   HomePageDrawerItem(
                       itemText: "Tasks",
                       itemIcon: Icons.add_task_sharp,
                       itemIndex: 4,
-                      itemNavigationPageName:
-                          PagesNames.notificationsPage,
+                      itemNavigationPageName: PagesNames.notificationsPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
-                            .changeSelectedDraerItem(3);
-                        Navigator.pushNamed(
-                            context, PagesNames.notificationsPage);
+                            .changeSelectedDraerItem(4);
+                        Get.back();
+                        Get.toNamed(PagesNames.todoPage);
                       }),
                   HomePageDrawerItem(
                       itemText: "Settings",
@@ -90,7 +87,7 @@ class HomePageDrawerWidget extends StatelessWidget {
                       itemNavigationPageName: PagesNames.settingsPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
-                            .changeSelectedDraerItem(4);
+                            .changeSelectedDraerItem(5);
                         Get.toNamed(PagesNames.settingsPage);
                       }),
                   Divider(height: 0, thickness: 1),
@@ -102,9 +99,9 @@ class HomePageDrawerWidget extends StatelessWidget {
                       itemNavigationPageName: PagesNames.accountPage,
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
-                            .changeSelectedDraerItem(5);
-                        Navigator.pushNamed(
-                            context, PagesNames.accountPage);
+                            .changeSelectedDraerItem(6);
+                        Get.back();
+                        Get.toNamed(PagesNames.accountPage);
                       }),
 
                   HomePageDrawerItem(
@@ -113,8 +110,10 @@ class HomePageDrawerWidget extends StatelessWidget {
                       itemIndex: 7,
                       itemNavigationPageName: PagesNames.loginScreenName,
                       function: () async {
-                        await GoogleAuthController().signOut().then((value) =>
-                            Get.offNamed(PagesNames.loginScreenName));
+                        await GoogleAuthController().signOut().then((value) {
+                          Get.back();
+                          Get.offNamed(PagesNames.loginScreenName);
+                        });
                       }),
                   HomePageDrawerItem(
                       itemText: "About Us",
@@ -124,8 +123,8 @@ class HomePageDrawerWidget extends StatelessWidget {
                       function: () {
                         BlocProvider.of<DrawerCubit>(context)
                             .changeSelectedDraerItem(7);
-                        Navigator.pushNamed(
-                            context, PagesNames.aboutUsPage);
+                        Get.back();
+                        Get.toNamed(PagesNames.aboutUsPage);
                       }),
                 ],
               );

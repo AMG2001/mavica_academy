@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:todo_app/screens/todo_homePage/todo_home_page_components/date_picker_text_field.dart';
-import 'package:todo_app/screens/todo_homePage/todo_home_page_components/grey_shift_slider.dart';
-import 'package:todo_app/screens/todo_homePage/todo_home_page_components/task_title_text_field.dart';
-import 'package:todo_app/screens/todo_homePage/todo_home_page_components/time_picker_text_field.dart';
-import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen.dart';
-import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen_controller.dart';
-import 'package:todo_app/services/database.dart';
+import 'package:mavica_academy/Todo_App/tasks_screen/tasks_screen_controller.dart';
+import 'package:mavica_academy/Todo_App/todo_homePage/todo_home_page_components/date_picker_text_field.dart';
+import 'package:mavica_academy/Todo_App/todo_homePage/todo_home_page_components/grey_shift_slider.dart';
+import 'package:mavica_academy/Todo_App/todo_homePage/todo_home_page_components/task_title_text_field.dart';
+import 'package:mavica_academy/Todo_App/todo_homePage/todo_home_page_components/time_picker_text_field.dart';
+import 'package:mavica_academy/config/application_configs/colors/defaultColors.dart';
 
 class HomePageController extends GetxController {
   BuildContext context;
@@ -38,38 +37,43 @@ class HomePageController extends GetxController {
               ),
             ),
             width: Get.width,
-            height: Get.height * .56,
+            height: Get.height * .5,
             child: Form(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               key: formKey,
-              child: Column(
+              // TODO when i put it column , greyShift Slider work fine
+              /**
+               * when i make it list view , i stretched !! 
+               */
+              child: ListView(
                 children: [
                   /**
-                   * top space 
-                   */
+                       * top space 
+                       */
                   SizedBox(
                     height: 16,
                   ),
                   /**
-                   * Slide gray shift 
-                   */
+                       * Slide gray shift 
+                       */
                   GreyShiftSlider(),
                   /**
-                   * Space between slide shift and post Title TF
-                   */
+                       * Space between slide shift and post Title TF
+                       */
                   SizedBox(
                     height: 24,
                   ),
                   /**
-                   * Task Title TF
-                   */
+                       * Task Title TF
+                       */
                   TaskTitleTextField(
                       controller: taskTitleController,
                       prefixIcon: Icon(Icons.title_outlined),
                       title: "Task Title",
                       width: Get.width),
                   /**
-                 * Task Time TF
-                 */
+                     * Task Time TF
+                     */
                   TimePickerTextField(
                       taskTimeController: taskTimeController,
                       textFieldWidth: Get.width,
@@ -77,8 +81,8 @@ class HomePageController extends GetxController {
                       icon: Icon(Icons.access_alarm_outlined)),
 
                   /**
-                 *  Task Date TF
-                 */
+                     *  Task Date TF
+                     */
                   DatePickerTextField(
                       taskDateController: taskDateController,
                       labelText: "Task Date",
@@ -91,8 +95,8 @@ class HomePageController extends GetxController {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       /**
-                             * "Cancel" - Back Button
-                             */
+                                 * "Cancel" - Back Button
+                                 */
                       ElevatedButton(
                           style: ButtonStyle(
                             textStyle: MaterialStateProperty.all<TextStyle>(
@@ -120,15 +124,15 @@ class HomePageController extends GetxController {
                             ],
                           )),
                       /**
-                             * Save Button
-                             */
+                                 * Save Button
+                                 */
                       ElevatedButton(
                         style: ButtonStyle(
                           textStyle: MaterialStateProperty.all<TextStyle>(
                               TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500)),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.purple),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              DefaultColors.defaultRed),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -147,9 +151,9 @@ class HomePageController extends GetxController {
                             taskDateController.clear();
                             Get.back();
 
-/**
- * after process finished , show Success Animation .
- */
+                            /**
+                 * after process finished , show Success Animation .
+                 */
                             showDialog(
                                 context: context,
                                 builder: (context) {
@@ -158,8 +162,14 @@ class HomePageController extends GetxController {
                                     Navigator.pop(context);
                                   });
                                   return Center(
-                                    child: Lottie.asset('assets/success.json',
-                                        repeat: false),
+                                    child: Container(
+                                      width: Get.width * .5,
+                                      height: Get.height * .5,
+                                      child: Lottie.asset(
+                                          'assets/animated_vectors/success.json',
+                                          // assets/animated_vectors/success.json
+                                          repeat: false),
+                                    ),
                                   );
                                 });
                           }

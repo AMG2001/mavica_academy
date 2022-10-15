@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mavica_academy/Todo_App/archieved_screen/archived_screen.dart';
+import 'package:mavica_academy/Todo_App/done_screen/done_screen.dart';
+import 'package:mavica_academy/Todo_App/tasks_screen/tasks_screen.dart';
+import 'package:mavica_academy/Todo_App/todo_homePage/home_page_controller.dart';
+import 'package:mavica_academy/config/application_configs/colors/defaultColors.dart';
 
-import 'package:todo_app/screens/archived_screen.dart';
-import 'package:todo_app/screens/done_screen.dart';
-
-import 'package:todo_app/screens/todo_homePage/todo_home_page_components/home_page_controller.dart';
-
-import 'package:todo_app/screens/todo_homePage/tasks_screen/tasks_screen.dart';
-import 'package:todo_app/services/database.dart';
 
 class TodoHomePage extends StatefulWidget {
   const TodoHomePage({super.key});
@@ -25,7 +23,7 @@ class _TodoHomePage extends State<TodoHomePage> {
   @override
   Widget build(BuildContext context) {
     final homePageController =
-        Get.put(HomePageController(context: context), permanent: true);
+        Get.put(HomePageController(context: context));
 
     return Scaffold(
       /**
@@ -43,14 +41,20 @@ class _TodoHomePage extends State<TodoHomePage> {
        */
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          homePageController.showBottomSheet();
+          try{
+            homePageController.showBottomSheet();
+          }catch(e){
+            print(e);
+          }
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add,color: Colors.white,),
       ),
       /**
        * ******************************* Bottom Navigation Bar **************************
        */
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 16.0,
+        selectedItemColor: DefaultColors.defaultRed,
         currentIndex: _currentIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: "Tasks"),
@@ -69,11 +73,3 @@ class _TodoHomePage extends State<TodoHomePage> {
   }
 }
 
-/**
- *   await DatabaseClass.insertIntoDatabase(
-              title: "First task",
-              date:  DateFormat.yMMMMd('en_US').format(DateTime.now()),
-              time: DateFormat.jm().format(DateTime.now()),
-              status: "Not finished");
-          await DatabaseClass.showDatabase();
- */

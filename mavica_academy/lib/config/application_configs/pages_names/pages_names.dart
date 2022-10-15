@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mavica_academy/Todo_App/todo_homePage/todo_home_page.dart';
 import 'package:mavica_academy/pages/about_us/about_us_page.dart';
 import 'package:mavica_academy/pages/account_page/account_page.dart';
 import 'package:mavica_academy/pages/animated_splach_screen/animated_splach_screen.dart';
@@ -73,7 +74,7 @@ class PagesNames {
         transition: Transition.leftToRight),
          GetPage(
         name: todoPage,
-        page: () => CoursesPage(),
+        page: () => TodoHomePage(),
         transition: Transition.fade),
   ];
 }

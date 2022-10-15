@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="899a709c-13bf-4593-8ac9-0b95a0f560cf" name="Changes" comment="" />
+    <list default="true" id="899a709c-13bf-4593-8ac9-0b95a0f560cf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/main.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/tasks_screen/tasks_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/tasks_screen/tasks_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/tasks_screen/tasks_screen_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/tasks_screen/tasks_screen_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/todo_home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/todo_home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/todo_home_page_components/home_page_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/todo_home_page_components/home_page_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/todo_home_page_components/task_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/Todo_App/todo_homePage/todo_home_page_components/task_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/config/application_configs/pages_names/pages_names.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/config/application_configs/pages_names/pages_names.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/lib/pages/home_page/home_page_components/home_page_drawer_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/lib/pages/home_page/home_page_components/home_page_drawer_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mavica_academy/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mavica_academy/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +38,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mavica_academy" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>

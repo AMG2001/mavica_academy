@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/services/database.dart';
+import 'package:mavica_academy/Todo_App/services/database.dart';
+import 'package:mavica_academy/Todo_App/services/toast.dart';
 
 class TasksScreenController extends GetxController {
   List<Map<String, dynamic>> tasks = [];
@@ -15,13 +16,20 @@ class TasksScreenController extends GetxController {
         title: taskTitleController.text,
         date: taskDateController.text,
         time: taskTimeController.text,
-        status: "not finished");
+        status: TodoDatabaseClass.notFinishedState);
     await refreshTasksList();
     update();
   }
 
   Future<void> refreshTasksList() async {
-    tasks = await TodoDatabaseClass.showDatabaseRecordes();
+    tasks = await TodoDatabaseClass.showNotFinishedTasks();
+  }
+
+  Future<void> changedToDoneState({required int id}) async {
+    await TodoDatabaseClass.changeStateToDone(id);
+    await refreshTasksList();
+    update();
+    CustomToast.showToast("Task marked done successfully ✔");
   }
 
   Future<void> deleteTask({required int id}) async {

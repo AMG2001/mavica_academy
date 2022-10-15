@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class GreyShiftSlider extends StatelessWidget {
   const GreyShiftSlider({super.key});
@@ -10,8 +11,8 @@ class GreyShiftSlider extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: Colors.grey,
       ),
-      width: MediaQuery.of(context).size.width * .1,
-      height: MediaQuery.of(context).size.height * .005,
+      width: Get.width * .1,
+      height: Get.height * .005,
     );
   }
 }
